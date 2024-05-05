@@ -1,0 +1,126 @@
+<div class="row mx-auto">
+    <div class="col-2">
+         <!-- Aquí puedes agregar el margen horizontal -->
+    </div>
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header">Perfil</div>
+            <div class="card-body">
+                <form #registrationForm="ngForm" (ngSubmit)="submitUpdate ()">
+                    <div class="mb-1">
+                        <label for="name" class="form-label">Name</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="name"
+                            name="name"
+                            [(ngModel)]="form.name"
+                            required
+                        />
+                    </div>
+                    <div class="mb-1">
+                        <label for="lastName" class="form-label">Last Name</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="lastName"
+                            name="lastName"
+                            [(ngModel)]="form.lastName"
+                            required
+                        />
+                    </div>
+                    <div class="mb-1" >
+                        <label for="email" class="form-label">Email</label>
+                        <input
+                            type="email"
+                            class="form-control"
+                            id="email"
+                            name="email"
+                            [(ngModel)]="form.email"
+                            required
+                            readonly
+                        />
+                    </div>
+                    
+                    <div class="mb-1">
+                        <label for="idNumber" class="form-label">Cedula</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="idNumber"
+                            name="idNumber"
+                            [(ngModel)]="form.idNumber"
+                            required
+                        />
+                    </div>
+                    <div class="mb-1">
+                        <label for="phone" class="form-label">Phone</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="phone"
+                            name="phone"
+                            [(ngModel)]="form.phone"
+                            required
+                        />
+                    </div>
+                    <div class="mb-1">
+                        <label for="state" class="form-label">State</label>
+                        <select
+                          class="form-control"
+                          id="state"
+                          name="state"
+                          [(ngModel)]="form.state"
+                          (change)="onStateChange()"
+                          required
+                        >
+                          <option value="">Select State</option>
+                          <option *ngFor="let state of states" [value]="state.name">{{ state.name }}</option>
+                        </select>
+                      </div>
+                      
+                      <div class="mb-1">
+                        <label for="city" class="form-label">City</label>
+                        <select
+                          class="form-control"
+                          id="city"
+                          name="city"
+                          [(ngModel)]="form.city"
+                          required
+                        >
+                          <option value="">Select City</option>
+                          <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+                        </select>
+                      </div>
+                      
+                    <div class="mb-1">
+                        <label for="file" class="form-label">File</label>
+                        <input
+                            type="file"
+                            class="form-control"
+                            id="file"
+                            name="file"
+                            (change)="capturarFile($event)"
+                            [(ngModel)]="form.file"
+                            required
+                        />
+                    </div>
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                        
+                    >
+                        Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-2">
+        <p-image
+        [src]="previsualizacion"
+            alt="Image"
+            width="250"
+        />
+    </div>
+</div>
