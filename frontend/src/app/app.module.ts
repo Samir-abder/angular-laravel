@@ -19,6 +19,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PanelModule } from 'primeng/panel';
 import { ImageModule } from 'primeng/image';
 import { DropdownModule } from 'primeng/dropdown';
+import { MainComponent } from './componentes/main/main.component';
+import { FooterComponent } from './componentes/footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +28,8 @@ import { DropdownModule } from 'primeng/dropdown';
     LoginComponent,
     ProfileComponent,
     SignupComponent,
+    MainComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

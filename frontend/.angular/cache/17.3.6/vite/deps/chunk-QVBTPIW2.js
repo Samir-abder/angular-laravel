@@ -1,6 +1,6 @@
 import {
   ObjectUtils
-} from "./chunk-X4Q2ODIE.js";
+} from "./chunk-GIZUBFE6.js";
 import {
   ChangeDetectionStrategy,
   Component,
@@ -742,8 +742,8 @@ var BaseIcon = class _BaseIcon {
 })();
 
 export {
-  BaseIcon,
   DomHandler,
-  ConnectedOverlayScrollHandler
+  ConnectedOverlayScrollHandler,
+  BaseIcon
 };
-//# sourceMappingURL=chunk-4CAIOA52.js.map
+//# sourceMappingURL=chunk-QVBTPIW2.js.map

@@ -1,0 +1,19 @@
+.navbar {
+  background-color: #303030;
+}
+
+.navbar-brand {
+  color: white;
+}
+
+.btn.nav-btn {
+  background-color: transparent;
+  color: white;
+  border: 1px solid rgb(150, 150, 150); /* Cambia el color del borde a un gris más claro */
+  border-radius: 2; /* Hace que los botones sean cuadrados */
+}
+
+.btn.nav-btn:hover {
+  background-color: #24D48A; /* Cambia el color de fondo al pasar el mouse por encima */
+  border-color: #24D48A; /* Cambia el color del borde al pasar el mouse por encima */
+}

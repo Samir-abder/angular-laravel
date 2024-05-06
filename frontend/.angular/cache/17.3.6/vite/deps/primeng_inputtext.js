@@ -1,6 +1,6 @@
 import {
   PrimeNGConfig
-} from "./chunk-X4Q2ODIE.js";
+} from "./chunk-GIZUBFE6.js";
 import {
   NgModel
 } from "./chunk-4KLQIE65.js";

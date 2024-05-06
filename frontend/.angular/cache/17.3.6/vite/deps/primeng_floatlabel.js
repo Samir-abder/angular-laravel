@@ -1,11 +1,11 @@
 import {
-  SharedModule
-} from "./chunk-X4Q2ODIE.js";
-import {
   RouterModule
 } from "./chunk-LYR37WTX.js";
 import "./chunk-R4BDEQJF.js";
 import "./chunk-NXQTE4PI.js";
+import {
+  SharedModule
+} from "./chunk-GIZUBFE6.js";
 import {
   CommonModule
 } from "./chunk-FDJNDTLU.js";
