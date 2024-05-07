@@ -1,9 +1,16 @@
 .navbar {
   background-color: #303030;
+  padding-left: 20px; /* Añade un poco de espacio a la izquierda */
 }
 
 .navbar-brand {
   color: white;
+  font-size: 1.5em; /* Aumenta el tamaño de la fuente */
+  transition: color 0.5s; /* Añade una transición suave al cambiar el color */
+}
+
+.navbar-brand:hover {
+  color: #24D48A; /* Cambia el color al pasar el mouse por encima */
 }
 
 .btn.nav-btn {
@@ -17,3 +24,4 @@
   background-color: #24D48A; /* Cambia el color de fondo al pasar el mouse por encima */
   border-color: #24D48A; /* Cambia el color del borde al pasar el mouse por encima */
 }
+
