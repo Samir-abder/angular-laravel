@@ -14,7 +14,7 @@ body {
 }
 
 .features {
-  padding: 40px 0; /* Añade 20px de relleno en la parte superior e inferior */
+  padding: 60px 0; /* Añade 20px de relleno en la parte superior e inferior */
   margin-top: 50px;
   margin-bottom: 50px;
   color: white; /* Cambia el color de la letra a blanco */
@@ -30,10 +30,10 @@ body {
 
 .features .col {
   flex: 0 0 auto; /* Evita que los elementos se estiren */
-  width: 20%; /* Hace que los elementos sean un poco más pequeños */
+  width: 23%; /* Hace que los elementos sean un poco más pequeños */
   text-align: center; /* Centra el texto y los iconos */
   background-color: #303030; /* Añade un fondo oscuro a cada columna */
-  padding: 18px; /* Añade un poco de espacio alrededor del contenido de cada columna */
+  padding: 20px; /* Añade un poco de espacio alrededor del contenido de cada columna */
   border-radius: 10px; /* Suaviza las esquinas de cada columna */
 }
 
