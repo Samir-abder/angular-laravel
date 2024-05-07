@@ -3,11 +3,13 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+
 }
 
 .col-8 {
   max-width: 40%; /* Reduce el tamaño horizontal del formulario */
-  margin-top: 10%;
+  margin-top: 7.5%;
+  margin-bottom: 7.5%;
 }
 
 .card-header, .card-body {
