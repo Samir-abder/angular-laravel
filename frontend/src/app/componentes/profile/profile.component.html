@@ -1,4 +1,4 @@
-<body>
+<div class="badi">
   <div class="row mx-auto">
     <div class="col-2">
          <!-- Aquí puedes agregar el margen horizontal -->
@@ -106,6 +106,10 @@
                             required
                         />
                     </div>
+
+                    <div class="alert alert-success mb-1" [hidden]="!exito">
+                        {{exito}}
+                      </div>
                     <button
                         type="submit"
                         class="btn btn-primary"
@@ -125,4 +129,4 @@
         />
     </div>
   </div>
-</body>
+</div>

@@ -12,15 +12,15 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputTextModule } from 'primeng/inputtext';
-import { FieldsetModule } from 'primeng/fieldset';
 import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PanelModule } from 'primeng/panel';
 import { ImageModule } from 'primeng/image';
-import { DropdownModule } from 'primeng/dropdown';
 import { MainComponent } from './componentes/main/main.component';
 import { FooterComponent } from './componentes/footer/footer.component';
+import { AdminComponent } from './componentes/admin/admin.component';
+import { TableModule } from 'primeng/table';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +30,7 @@ import { FooterComponent } from './componentes/footer/footer.component';
     SignupComponent,
     MainComponent,
     FooterComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,13 +40,11 @@ import { FooterComponent } from './componentes/footer/footer.component';
     HttpClientModule,
     InputTextModule,
     FloatLabelModule,
-    FieldsetModule,
     AvatarModule,
     AvatarGroupModule,
     BrowserAnimationsModule,
-    PanelModule,
     ImageModule,
-    DropdownModule
+    TableModule,
   ],
   providers: [
     provideClientHydration()

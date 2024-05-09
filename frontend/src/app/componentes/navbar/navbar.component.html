@@ -2,9 +2,12 @@
   <div class="container-fluid">
     <a class="navbar-brand" routerLink="main">YouTuben't</a>
     <div>
-      <button class="btn nav-btn" routerLink="profile">Profile</button>
-      <button class="btn nav-btn" routerLink="login">Login</button>
-      <button class="btn nav-btn" routerLink="signup">Sign up</button>
+      <button class="btn nav-btn" routerLink="profile"*ngIf="isLoggedIn()">Profile</button>
+      <button class="btn nav-btn" routerLink="login" *ngIf="!isLoggedIn()">Login</button>
+      <button class="btn nav-btn" routerLink="signup" *ngIf="!isLoggedIn()">Sign up</button>
+      <button class="btn nav-btn" routerLink="admin"*ngIf="isLoggedIn()">admin</button>
+      <button class="btn nav-btn" (click)="logout()" *ngIf="isLoggedIn()">Log out</button>
+
     </div>
   </div>
 </nav>

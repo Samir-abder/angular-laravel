@@ -14,6 +14,7 @@ Route::group(['middleware' => 'api',], function ($router) {
 
     Route::post('login', [AuthController::class, 'login']);
     Route::get('getUser',[AuthController::class,'getUser']);
+    Route::get('getAllUser',[AuthController::class,'getAllUser']);
     Route::post('updateUser',[AuthController::class,'updateUser']);
     Route::post('saveFile',[AuthController::class,'saveFile']);
     Route::get('/imagenes/{fileName}', function ($fileName) {

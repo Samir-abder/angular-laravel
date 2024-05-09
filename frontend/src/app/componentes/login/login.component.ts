@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BackendService } from '../../services/backend.service';
 import { error } from 'console';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class LoginComponent {
   }
 
   public error = null;
-  constructor(private backend:BackendService){ }
+  constructor(private backend:BackendService, private router: Router){ }
   ngOnInit(): void {
   }
   submitLogin(){
@@ -26,6 +27,7 @@ export class LoginComponent {
         // Luego puedes guardar el token en localStorage o en una cookie
         this.saveToken(accessToken);
         this.saveEmail(this.form.email);
+        this.router.navigate(['/main']);
       },
       error => this.handleError(error)  
     );

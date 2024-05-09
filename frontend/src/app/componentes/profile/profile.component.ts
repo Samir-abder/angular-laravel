@@ -21,13 +21,16 @@ export class ProfileComponent implements OnInit {
   };
 
   public states = [
-    { name: "State 1", cities: ["City 1.1", "City 1.2", "City 1.3"] },
-    { name: "State 2", cities: ["City 2.1", "City 2.2", "City 2.3"] },
+    { name: "Carabobo", cities: ["Valencia", "Naguanagua", "San Diego"] },
+    { name: "Aragua", cities: ["Maracay", "Turmero","Villa del cura"] },
+    { name: "Zulia", cities: ["Maracaibo", "Cabimas", "Ciudad ojeda"] },
+
     // Agrega más estados y ciudades según sea necesario
   ];
 
   public cities: string[] = [];
   public error: any = [];
+  public exito= '';
   public previsualizacion: string = ''; // Assign an initial value to the 'previsualizacion' property
 
   constructor(private backend: BackendService, private sanitizer: DomSanitizer) { }
@@ -55,8 +58,10 @@ export class ProfileComponent implements OnInit {
     console.log(formData.get('file'));
   
     return this.backend.updateUser(formData).subscribe(
-      data => console.log(data),
-      error => this.handleError(error)
+      data => this.exito = 'Usuario actualizado correctamente',
+      error => this.handleError(error),
+    
+      
     );
   }
   

@@ -5,14 +5,14 @@ import { SignupComponent } from './componentes/signup/signup.component';
 import { ProfileComponent } from './componentes/profile/profile.component';
 import { AuthGuard } from './auth.guard';
 import { MainComponent } from './componentes/main/main.component';
+import { AdminComponent } from './componentes/admin/admin.component';
 
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   redirectTo: 'main',
-  //   pathMatch: 'full'
-  // },
+  {
+    path: '',
+    component : MainComponent
+  },
   {
     path: 'login',
     component : LoginComponent
@@ -28,6 +28,10 @@ const routes: Routes = [
   {
     path: 'main',
     component : MainComponent
+  },
+  {
+    path: 'admin',
+    component : AdminComponent
   }
 ];
 

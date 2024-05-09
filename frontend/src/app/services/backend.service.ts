@@ -24,4 +24,8 @@ export class BackendService {
     // Pasar los parámetros de consulta en la solicitud GET
     return this.http.get('http://127.0.0.1:8000/api/getUser', { params });
   }
+
+  getAllUser(){
+    return this.http.get('http://127.0.0.1:8000/api/getAllUser');
+  }
 }

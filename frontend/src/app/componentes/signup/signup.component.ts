@@ -14,7 +14,7 @@ export class SignupComponent {
     password:null,
     password_confirmation:null
   }
-  public error:any = [];
+  public error = '';
   constructor(private backend:BackendService){ }
   ngOnInit(): void {
 
@@ -23,10 +23,18 @@ export class SignupComponent {
     //console.log(this.form);
     return this.backend.signup(this.form).subscribe(
       data => console.log(data),
-      error => this.handleError(error)
+      error => this.handleError(error) 
     );
   }
-  handleError(error:any){
-    this.error = error.error.erros;
+  handleError(error: any) {
+    console.log("error");
+    if (error.error && error.error.error) {
+      this.error = error.error.error;
+    } else {
+      this.error = "El email ya se encuentra registrado" || "An error occurred";
+    }
+    console.log(this.error);  
   }
+  
+
 }

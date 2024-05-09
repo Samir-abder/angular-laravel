@@ -49,7 +49,7 @@ class AuthController extends Controller
             return response()->json(['message'=>"User Added",'userData'=>$userData],200);
         } catch (ValidationException $e) {
             // Manejar la excepción de validación aquí
-            return response()->json(['error' => $e->errors()], 422);
+            return response()->json(['error' => "El email ya se encuentra registrado."], 422);
         }
     }
 
@@ -69,6 +69,17 @@ class AuthController extends Controller
         return response()->json(['user' => $user], 200);
     
     }
+    public function getAllUser()
+{
+    $users = User::all();
+
+    if ($users->isEmpty()) {
+        return response()->json(['error' => 'No users found'], 404);
+    }
+
+    return response()->json(['users' => $users], 200);
+}
+
     public function updateUser(Request $request)
     {
         $request->validate([
@@ -83,19 +94,25 @@ class AuthController extends Controller
         }
 
        // Validar si el archivo fue enviado
-if ($request->hasFile('file')) {
-    // Obtener el archivo de la solicitud
-    $file = $request->file('file');
-    // Generar un nombre único para el archivo
-    $fileName = uniqid('file_') . '.' . $file->getClientOriginalExtension();
+        if ($request->hasFile('file')) {
+            // Obtener el archivo de la solicitud
+            $file = $request->file('file');
+            // Generar un nombre único para el archivo
+            $fileName = uniqid('file_') . '.' . $file->getClientOriginalExtension();
 
-    // Guardar el archivo en el directorio deseado
-    $file->storeAs('public/files', $fileName);
+            // Guardar el archivo en el directorio deseado
+            $file->storeAs('public/files', $fileName);
 
-    // Devolver la ruta del archivo guardado
-    $filePath = 'files/' . $fileName;
-    $user->foto = $fileName;
-}
+            // Devolver la ruta del archivo guardado
+            $filePath = 'files/' . $fileName;
+            $user->foto = $fileName;
+        }
+
+         // Eliminar valores en blanco del request
+        $data = array_filter($request->except(['email', 'file']), function ($value) {
+            return $value !== null && $value !== '';
+        });
+
 
         $user->update($request->except('email'));
 

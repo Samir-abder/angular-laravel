@@ -1,23 +1,21 @@
 import {
-  TimesIcon
-} from "./chunk-C3AQCALT.js";
-import {
   BaseIcon,
-  DomHandler
-} from "./chunk-QVBTPIW2.js";
-import {
-  PrimeNGConfig,
-  PrimeTemplate,
-  SharedModule,
-  UniqueComponentId,
-  zindexutils
-} from "./chunk-GIZUBFE6.js";
+  DomHandler,
+  TimesIcon
+} from "./chunk-HBY3DC5A.js";
 import {
   animate,
   style,
   transition,
   trigger
 } from "./chunk-7VNDBMUV.js";
+import {
+  PrimeNGConfig,
+  PrimeTemplate,
+  SharedModule,
+  UniqueComponentId,
+  zindexutils
+} from "./chunk-X4Q2ODIE.js";
 import {
   CommonModule,
   DOCUMENT,
