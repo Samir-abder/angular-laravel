@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ColorController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -10,8 +11,10 @@ Route::get('/user', function (Request $request) {
 
 Route::post('signup',[AuthController::class,'signup']);
 
-Route::group(['middleware' => 'api',], function ($router) {
 
+
+Route::group(['middleware' => 'api',], function ($router) {
+    Route::post('updateColors',[ColorController::class,'updateColors']);
     Route::post('login', [AuthController::class, 'login']);
     Route::get('getUser',[AuthController::class,'getUser']);
     Route::get('getAllUser',[AuthController::class,'getAllUser']);
@@ -20,7 +23,7 @@ Route::group(['middleware' => 'api',], function ($router) {
     Route::get('/imagenes/{fileName}', function ($fileName) {
         // Obtener la ruta completa del archivo
         $filePath = storage_path('app/imagenes/' . $fileName);
-    
+
         // Verificar si el archivo existe
         if (file_exists($filePath)) {
             // Devolver la imagen con el tipo de contenido adecuado
@@ -30,7 +33,7 @@ Route::group(['middleware' => 'api',], function ($router) {
             abort(404);
         }
     });
-    
+
     #Route::post('logout', [AuthController::class, 'logout']);
     #Route::post('refresh', [AuthController::class, 'refresh']);
     #Route::post('me', [AuthController::class, 'me']);

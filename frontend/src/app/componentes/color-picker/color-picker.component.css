@@ -1,0 +1,41 @@
+.badi {
+  background-color: #404040;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.col-8 {
+  max-width: 40%; /* Reduce el tamaño horizontal del formulario */
+  margin-top: 10%;
+}
+
+.card-header, .card-body {
+  background-color: #303030; /* Cambia el color de fondo del card-header y card-body */
+  color: white; /* Cambia el color del texto a blanco */
+  padding: 20px; /* Añade un padding para separar los elementos dentro del card-body */
+}
+
+.color-swatch {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+}
+
+/* Alinea los campos de entrada, colorpicker y selects a la derecha */
+input, select {
+  float: right;
+}
+
+/* Alinea las etiquetas a la izquierda */
+label {
+  float: left;
+}
+
+/* Limpia los flotantes y añade un espacio entre los campos del formulario */
+.form-group::after {
+  content: "";
+  display: table;
+  clear: both;
+  margin-bottom: 15px;
+}

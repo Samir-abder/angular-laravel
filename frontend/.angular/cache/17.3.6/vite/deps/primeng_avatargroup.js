@@ -2,7 +2,7 @@ import {
   CommonModule,
   NgClass,
   NgStyle
-} from "./chunk-FDJNDTLU.js";
+} from "./chunk-XAS4SJBG.js";
 import {
   ChangeDetectionStrategy,
   Component,
@@ -19,7 +19,8 @@ import {
   ɵɵprojection,
   ɵɵprojectionDef,
   ɵɵproperty
-} from "./chunk-2K6BZTPV.js";
+} from "./chunk-X6RUONED.js";
+import "./chunk-WKYGNSYM.js";
 
 // node_modules/primeng/fesm2022/primeng-avatargroup.mjs
 var _c0 = ["*"];

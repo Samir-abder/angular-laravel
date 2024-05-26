@@ -3,6 +3,7 @@
     <a class="navbar-brand" routerLink="main">YouTuben't</a>
     <div>
       <button class="btn nav-btn" routerLink="profile"*ngIf="isLoggedIn()">Profile</button>
+      <button class="btn nav-btn" routerLink="colorpicker"*ngIf="!isLoggedIn()">Color</button>
       <button class="btn nav-btn" routerLink="login" *ngIf="!isLoggedIn()">Login</button>
       <button class="btn nav-btn" routerLink="signup" *ngIf="!isLoggedIn()">Sign up</button>
       <button class="btn nav-btn" routerLink="admin"*ngIf="isLoggedIn()">admin</button>
