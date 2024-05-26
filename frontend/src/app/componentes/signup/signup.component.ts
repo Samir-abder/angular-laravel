@@ -23,7 +23,7 @@ export class SignupComponent {
     //console.log(this.form);
     return this.backend.signup(this.form).subscribe(
       data => console.log(data),
-      error => this.handleError(error) 
+      error => this.handleError(error)
     );
   }
   handleError(error: any) {
@@ -31,10 +31,10 @@ export class SignupComponent {
     if (error.error && error.error.error) {
       this.error = error.error.error;
     } else {
-      this.error = "El email ya se encuentra registrado" || "An error occurred";
+      this.error = "a" || "An error occurred";
     }
-    console.log(this.error);  
+    console.log(this.error);
   }
-  
+
 
 }

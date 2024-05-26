@@ -17,6 +17,9 @@ export class BackendService {
   updateUser(data:any){
     return this.http.post('http://127.0.0.1:8000/api/updateUser', data);
   }
+  updateColors(data:any){
+    return this.http.post('http://127.0.0.1:8000/api/updateColors', data);
+  }
   getUser(email: string) {
     // Construir los parámetros de consulta
     const params = new HttpParams().set('email', email);

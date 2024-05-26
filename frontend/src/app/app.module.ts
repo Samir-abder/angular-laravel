@@ -20,6 +20,7 @@ import { MainComponent } from './componentes/main/main.component';
 import { FooterComponent } from './componentes/footer/footer.component';
 import { AdminComponent } from './componentes/admin/admin.component';
 import { TableModule } from 'primeng/table';
+import { ColorPickerComponent } from './componentes/color-picker/color-picker.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { TableModule } from 'primeng/table';
     MainComponent,
     FooterComponent,
     AdminComponent,
+    ColorPickerComponent,
   ],
   imports: [
     BrowserModule,

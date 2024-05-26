@@ -1,0 +1,48 @@
+<div class="badi">
+  <div class="col-8 mx-auto align-items-center justify-content-center">
+    <div class="card">
+      <div class="card-header">
+        Personalización de aspecto.
+      </div>
+      <div class="card-body">
+        <form>
+          <div class="form-group">
+            <label for="fuente" class="float-left">Tamaño de la fuente:</label>
+            <input type="number" id="fuente" name="fuente" min="8" max="24" class="float-right" (input)="ajustarFuente($event)">
+            <div class="clearfix"></div>
+          </div>
+
+
+          <div class="form-group">
+            <label for="color" class="float-left">Color:</label>
+            <input type="color" id="color" name="color" #colorInput class="float-right" (change)="actualizarColor(colorInput.value)">
+            <div class="clearfix"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="paleta" class="float-left">Tipo de paleta:</label>
+            <select id="paleta" name="paleta" #paletaInput (change)="actualizarPaleta(paletaInput.value, colorInput.value)" class="float-right">
+              <option value="monocromatica">Monocromática</option>
+              <option value="triada">Triada</option>
+              <option value="tetrada">Tetrada</option>
+              <option value="analoga">Analoga</option>
+              <option value="complementaria">Complementaria</option>
+            </select>
+            <div class="clearfix"></div>
+          </div>
+
+          <h3>Muestra de colores:</h3>
+          <div id="colores" class="form-group">
+            <div *ngFor="let color of colores" [style.background-color]="color" class="color-swatch"></div>
+          </div>
+
+          <div class="form-group">
+            <button type="button" (click)="guardar()" class="btn btn-primary float-right">Guardar</button>
+            <div class="clearfix"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

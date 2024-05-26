@@ -6,7 +6,7 @@ import { ProfileComponent } from './componentes/profile/profile.component';
 import { AuthGuard } from './auth.guard';
 import { MainComponent } from './componentes/main/main.component';
 import { AdminComponent } from './componentes/admin/admin.component';
-
+import { ColorPickerComponent } from './componentes/color-picker/color-picker.component';
 
 const routes: Routes = [
   {
@@ -32,6 +32,10 @@ const routes: Routes = [
   {
     path: 'admin',
     component : AdminComponent
+  },
+  {
+    path: 'colorpicker',
+    component : ColorPickerComponent
   }
 ];
 

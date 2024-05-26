@@ -2,20 +2,20 @@ import {
   BaseIcon,
   DomHandler,
   TimesIcon
-} from "./chunk-HBY3DC5A.js";
+} from "./chunk-NBMDCJ3C.js";
 import {
   animate,
   style,
   transition,
   trigger
-} from "./chunk-7VNDBMUV.js";
+} from "./chunk-B27AOTAX.js";
 import {
   PrimeNGConfig,
   PrimeTemplate,
   SharedModule,
   UniqueComponentId,
   zindexutils
-} from "./chunk-X4Q2ODIE.js";
+} from "./chunk-RIYG23RS.js";
 import {
   CommonModule,
   DOCUMENT,
@@ -23,7 +23,7 @@ import {
   NgIf,
   NgStyle,
   NgTemplateOutlet
-} from "./chunk-FDJNDTLU.js";
+} from "./chunk-XAS4SJBG.js";
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -79,7 +79,8 @@ import {
   ɵɵtemplate,
   ɵɵtemplateRefExtractor,
   ɵɵviewQuery
-} from "./chunk-2K6BZTPV.js";
+} from "./chunk-X6RUONED.js";
+import "./chunk-WKYGNSYM.js";
 
 // node_modules/primeng/fesm2022/primeng-icons-eye.mjs
 var EyeIcon = class _EyeIcon extends BaseIcon {
