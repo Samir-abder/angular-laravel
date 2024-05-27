@@ -26,4 +26,17 @@ class ColorController extends Controller
 
         return response()->json('Colors Updated Successfully.');
     }
+
+    public function getColors()
+    {
+        // Obtiene el primer registro de la tabla 'colors'
+        $color = Color::first();
+
+        // Verifica si se encontró un registro
+        if ($color) {
+            return response()->json($color);
+        } else {
+            return response()->json('No colors found.', 404);
+        }
+    }
 }

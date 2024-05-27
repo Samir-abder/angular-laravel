@@ -1,132 +1,143 @@
+<br /><br />
+<br /><br />
 <div class="badi">
-  <div class="row mx-auto">
-    <div class="col-2">
-         <!-- Aquí puedes agregar el margen horizontal -->
-    </div>
-    <div class="col-6">
-        <div class="card">
-            <div class="card-header">Perfil</div>
-            <div class="card-body">
-                <form #registrationForm="ngForm" (ngSubmit)="submitUpdate ()">
-                    <div class="mb-1">
-                        <label for="name" class="form-label">Name</label>
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="name"
-                            name="name"
-                            [(ngModel)]="form.name"
-                            required
-                        />
-                    </div>
-                    <div class="mb-1">
-                        <label for="lastName" class="form-label">Last Name</label>
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="lastName"
-                            name="lastName"
-                            [(ngModel)]="form.lastName"
-                            required
-                        />
-                    </div>
-                    <div class="mb-1" >
-                        <label for="email" class="form-label">Email</label>
-                        <input
-                            type="email"
-                            class="form-control"
-                            id="email"
-                            name="email"
-                            [(ngModel)]="form.email"
-                            required
-                            readonly
-                        />
-                    </div>
+  <div class="card" style="width: 60%; display: flex; justify-content: center; align-items: center;" >
+    <div class="card-header" style="text-align: center;">Perfil</div>
+    <div class="card-body">
+    <div class="row mx-auto">
+      
+      <div class="col-6">
+        <div class="card mt-0" >
+          <div class="card-body" style="min-height: 448px">
+            <form #registrationForm="ngForm" (ngSubmit)="submitUpdate()">
+              <div class="mb-1">
+                <label for="name" class="form-label">Nombre</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  name="name"
+                  [(ngModel)]="form.name"
+                  required
+                />
+              </div>
+              <div class="mb-1">
+                <label for="lastName" class="form-label">Apellido</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="lastName"
+                  name="lastName"
+                  [(ngModel)]="form.lastName"
+                  required
+                />
+              </div>
+              <div class="mb-1">
+                <label for="email" class="form-label">Correo</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  [(ngModel)]="form.email"
+                  required
+                  readonly
+                />
+              </div>
 
-                    <div class="mb-1">
-                        <label for="idNumber" class="form-label">Cedula</label>
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="idNumber"
-                            name="idNumber"
-                            [(ngModel)]="form.idNumber"
-                            required
-                        />
-                    </div>
-                    <div class="mb-1">
-                        <label for="phone" class="form-label">Phone</label>
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="phone"
-                            name="phone"
-                            [(ngModel)]="form.phone"
-                            required
-                        />
-                    </div>
-                    <div class="mb-1">
-                        <label for="state" class="form-label">State</label>
-                        <select
-                          class="form-control"
-                          id="state"
-                          name="state"
-                          [(ngModel)]="form.state"
-                          (change)="onStateChange()"
-                          required
-                        >
-                          <option value="">Select State</option>
-                          <option *ngFor="let state of states" [value]="state.name">{{ state.name }}</option>
-                        </select>
-                      </div>
-
-                      <div class="mb-1">
-                        <label for="city" class="form-label">City</label>
-                        <select
-                          class="form-control"
-                          id="city"
-                          name="city"
-                          [(ngModel)]="form.city"
-                          required
-                        >
-                          <option value="">Select City</option>
-                          <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
-                        </select>
-                      </div>
-
-                    <div class="mb-1">
-                        <label for="file" class="form-label">File</label>
-                        <input
-                            type="file"
-                            class="form-control"
-                            id="file"
-                            name="file"
-                            (change)="capturarFile($event)"
-                            [(ngModel)]="form.file"
-                            required
-                        />
-                    </div>
-
-                    <div class="alert alert-success mb-1" [hidden]="!exito">
-                        {{exito}}
-                      </div>
-                    <button
-                        type="submit"
-                        class="btn btn-primary"
-
-                    >
-                        Submit
-                    </button>
-                </form>
-            </div>
+              <div class="mb-1">
+                <label for="idNumber" class="form-label">Cedula</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="idNumber"
+                  name="idNumber"
+                  [(ngModel)]="form.idNumber"
+                  required
+                  (keypress)="allowOnlyNumbers($event)"
+                />
+              </div>
+              <div class="mb-1">
+                <label for="phone" class="form-label">Telefono</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="phone"
+                  name="phone"
+                  [(ngModel)]="form.phone"
+                  required
+                  (keypress)="allowOnlyNumbers($event)"
+                />
+              </div>
+            </form>
+          </div>
         </div>
+      </div>
+      <div class="col-6">
+        <div class="card">
+          <div class="card-body" style="min-height: 448px">
+            <form #registrationForm="ngForm" (ngSubmit)="submitUpdate()">
+              <div class="mb-1">
+                <label for="state" class="form-label">Estado</label>
+                <select
+                  class="form-control"
+                  id="state"
+                  name="state"
+                  [(ngModel)]="form.state"
+                  (change)="onStateChange()"
+                  required
+                >
+                  <option value="">Selecciona Estado</option>
+                  <option *ngFor="let state of states" [value]="state.name">
+                    {{ state.name }}
+                  </option>
+                </select>
+              </div>
+
+              <div class="mb-1">
+                <label for="city" class="form-label">Ciudad</label>
+                <select
+                  class="form-control"
+                  id="city"
+                  name="city"
+                  [(ngModel)]="form.city"
+                  required
+                >
+                  <option value="">Selecciona Ciudad</option>
+                  <option *ngFor="let city of cities" [value]="city">
+                    {{ city }}
+                  </option>
+                </select>
+              </div>
+
+              <div class="mb-4">
+                <label for="file" class="form-label">Subir Imagen</label>
+                <input
+                  type="file"
+                  class="form-control"
+                  id="file"
+                  name="file"
+                  (change)="capturarFile($event)"
+                  [(ngModel)]="form.file"
+                  required
+                />
+              </div>
+            </form>
+
+            <p-image [src]="previsualizacion" alt="Image" width="350"/>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col-2">
-        <p-image
-        [src]="previsualizacion"
-            alt="Image"
-            width="250"
-        />
-    </div>
+    <div class="alert alert-success mb-2" [hidden]="!exito">
+        {{ exito }}
+      </div>
+      <div style="display: flex; justify-content: center;"><button type="button" (click)="submitUpdate()" class="btn btn-primary">
+        Guardar
+      </button></div>
+    
+   
+</div>
+
   </div>
 </div>

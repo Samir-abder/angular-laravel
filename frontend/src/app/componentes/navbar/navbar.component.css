@@ -1,27 +1,22 @@
-.navbar {
-  background-color: #303030;
-  padding-left: 20px; /* Añade un poco de espacio a la izquierda */
+/* Aplica un borde negro al texto de los enlaces del navbar */
+.navbar-nav .nav-link {
+  color: var(--secondary); /* Color del texto */
+  /*text-shadow: 
+    -1px -1px 0 var(--secondary),  
+     1px -1px 0 var(--secondary),
+    -1px  1px 0 var(--secondary),
+     1px  1px 0 var(--secondary);  Borde negro */
 }
 
 .navbar-brand {
-  color: white;
-  font-size: 1.5em; /* Aumenta el tamaño de la fuente */
-  transition: color 0.5s; /* Añade una transición suave al cambiar el color */
+  color: var(--secondary); /* Color del texto */
+  /*text-shadow: 
+    -1px -1px 0 var(--secondary),  
+     1px -1px 0 var(--secondary),
+    -1px  1px 0 var(--secondary),
+     1px  1px 0 var(--secondary);  Borde negro */
 }
-
-.navbar-brand:hover {
-  color: #24D48A; /* Cambia el color al pasar el mouse por encima */
+.navbar .navbar-brand h1 {
+  
+  color: var(--secondary);
 }
-
-.btn.nav-btn {
-  background-color: transparent;
-  color: white;
-  border: 1px solid rgb(150, 150, 150); /* Cambia el color del borde a un gris más claro */
-  border-radius: 2; /* Hace que los botones sean cuadrados */
-}
-
-.btn.nav-btn:hover {
-  background-color: #24D48A; /* Cambia el color de fondo al pasar el mouse por encima */
-  border-color: #24D48A; /* Cambia el color del borde al pasar el mouse por encima */
-}
-

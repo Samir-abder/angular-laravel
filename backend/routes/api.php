@@ -15,6 +15,7 @@ Route::post('signup',[AuthController::class,'signup']);
 
 Route::group(['middleware' => 'api',], function ($router) {
     Route::post('updateColors',[ColorController::class,'updateColors']);
+    Route::get('getColors',[ColorController::class,'getColors']);
     Route::post('login', [AuthController::class, 'login']);
     Route::get('getUser',[AuthController::class,'getUser']);
     Route::get('getAllUser',[AuthController::class,'getAllUser']);

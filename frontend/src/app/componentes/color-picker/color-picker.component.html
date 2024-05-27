@@ -8,7 +8,7 @@
         <form>
           <div class="form-group">
             <label for="fuente" class="float-left">Tamaño de la fuente:</label>
-            <input type="number" id="fuente" name="fuente" min="8" max="24" class="float-right" (input)="ajustarFuente($event)">
+            <input type="number" id="fuente" name="fuente" min="8" max="24" class="float-right" (blur)="ajustarFuente($event)" (keypress)="allowOnlyNumbers($event)">
             <div class="clearfix"></div>
           </div>
 
@@ -25,13 +25,15 @@
               <option value="monocromatica">Monocromática</option>
               <option value="triada">Triada</option>
               <option value="tetrada">Tetrada</option>
-              <option value="analoga">Analoga</option>
+              <option value="analoga">Análoga</option>
               <option value="complementaria">Complementaria</option>
+              <option value="predeterminada">Predeterminada</option>
+
             </select>
             <div class="clearfix"></div>
           </div>
 
-          <h3>Muestra de colores:</h3>
+          <h4>Muestra de colores:</h4>
           <div id="colores" class="form-group">
             <div *ngFor="let color of colores" [style.background-color]="color" class="color-swatch"></div>
           </div>

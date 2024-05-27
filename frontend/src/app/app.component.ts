@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'frontend';
+
+  changeSecondaryColor(newColor: string) {
+    console.log('Changing secondary color to: ', newColor);
+    document.documentElement.style.setProperty('--secondary', newColor);
+  }
+  
 }

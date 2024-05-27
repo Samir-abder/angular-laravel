@@ -31,4 +31,7 @@ export class BackendService {
   getAllUser(){
     return this.http.get('http://127.0.0.1:8000/api/getAllUser');
   }
+  getColors(){
+    return this.http.get('http://127.0.0.1:8000/api/getColors');
+  }
 }
