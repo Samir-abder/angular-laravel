@@ -23,6 +23,7 @@ export class ColorPickerComponent {
     font: null as string | null
   }
   public error = '';
+  public funco = '';
   constructor(private backend:BackendService){ }
   ngOnInit(): void {
 
@@ -86,9 +87,14 @@ export class ColorPickerComponent {
     this.form.blanco = this.colores[3];
     this.form.negro = this.colores[4];
     this.form.font = (<HTMLInputElement>document.getElementById('fuente')).value;
+    
     return this.backend.updateColors(this.form).subscribe(
-      data => console.log(data),
+      data => {
+        console.log(data);
+        this.loadColors(); // Llama a la función colorload aquí
+      },
       error => this.handleError(error),
+     
     );
     
   }

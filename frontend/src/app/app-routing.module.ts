@@ -23,7 +23,7 @@ const routes: Routes = [
   },
   {
     path: 'profile',
-    component : ProfileComponent//,canActivate: [AuthGuard]
+    component : ProfileComponent,canActivate: [AuthGuard]
   },
   {
     path: 'main',
@@ -31,11 +31,11 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    component : AdminComponent
+    component : AdminComponent,canActivate: [AuthGuard]
   },
   {
     path: 'colorpicker',
-    component : ColorPickerComponent
+    component : ColorPickerComponent,canActivate: [AuthGuard]
   }
 ];
 

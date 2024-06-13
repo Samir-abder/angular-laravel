@@ -84,6 +84,6 @@ export class LoginComponent {
   ngAfterViewInit() {
     setTimeout(() => {
       this.loadColors();
-    }, 3000); // Retraso de 3 segundos
+    }, 1000); // Retraso de 3 segundos
   }
 }
