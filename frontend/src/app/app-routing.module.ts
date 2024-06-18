@@ -7,6 +7,9 @@ import { AuthGuard } from './auth.guard';
 import { MainComponent } from './componentes/main/main.component';
 import { AdminComponent } from './componentes/admin/admin.component';
 import { ColorPickerComponent } from './componentes/color-picker/color-picker.component';
+import { UserVideosComponent } from './componentes/user-videos/user-videos.component';
+import { VideosComponent } from './componentes/videos/videos.component';
+import { VideoReproductorComponent } from './componentes/video-reproductor/video-reproductor.component';
 
 const routes: Routes = [
   {
@@ -36,7 +39,20 @@ const routes: Routes = [
   {
     path: 'colorpicker',
     component : ColorPickerComponent,canActivate: [AuthGuard]
-  }
+  },
+  {
+    path: 'userVideos',
+    component : UserVideosComponent
+  },
+  {
+    path: 'videos',
+    component : VideosComponent
+  },
+  {
+    path: 'videoReproductor/:uniqueName',
+    component : VideoReproductorComponent
+  },
+  
 ];
 
 @NgModule({

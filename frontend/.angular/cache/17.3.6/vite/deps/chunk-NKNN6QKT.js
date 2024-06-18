@@ -84,9 +84,23 @@ function animation(steps, options = null) {
     options
   };
 }
+function animateChild(options = null) {
+  return {
+    type: AnimationMetadataType.AnimateChild,
+    options
+  };
+}
 function useAnimation(animation2, options = null) {
   return {
     type: AnimationMetadataType.AnimateRef,
+    animation: animation2,
+    options
+  };
+}
+function query(selector, animation2, options = null) {
+  return {
+    type: AnimationMetadataType.Query,
+    selector,
     animation: animation2,
     options
   };
@@ -481,7 +495,9 @@ export {
   state,
   transition,
   animation,
+  animateChild,
   useAnimation,
+  query,
   NoopAnimationPlayer,
   AnimationGroupPlayer,
   ɵPRE_STYLE
@@ -495,4 +511,4 @@ export {
    * License: MIT
    *)
 */
-//# sourceMappingURL=chunk-B27AOTAX.js.map
+//# sourceMappingURL=chunk-NKNN6QKT.js.map

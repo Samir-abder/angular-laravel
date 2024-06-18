@@ -34,4 +34,15 @@ export class BackendService {
   getColors(){
     return this.http.get('http://127.0.0.1:8000/api/getColors');
   }
+  getAllVideos(){
+    return this.http.get('http://127.0.0.1:8000/api/getAllVideos');
+  }
+  getVideoByLink(link: string) {
+    // Construir los parámetros de consulta
+    const apiUrl = `http://127.0.0.1:8000/api/getVideoByLink/${encodeURIComponent(link)}`;
+    return this.http.get(apiUrl);
+  }
+  submitVideos(data:any){
+    return this.http.post('http://127.0.0.1:8000/api/video', data);
+  }
 }

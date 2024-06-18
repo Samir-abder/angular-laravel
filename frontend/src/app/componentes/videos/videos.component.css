@@ -1,0 +1,60 @@
+.badi {
+  padding-top: 10%;
+  padding: 6%;
+}
+.card{
+    border: 1px solid #d3d3d3; /* Borde gris */
+    border-radius: 5px; /* Borde redondeado */
+    padding: 15px; /* Espaciado interno */
+    box-sizing: border-box; /* Incluye el padding y el borde en el tamaño total */
+    overflow: hidden; /* Oculta el contenido que se desborda */
+    display: flex; /* Usa flexbox para el diseño interno */
+    flex-direction: column; /* Dirección del flex */
+    height: 100%; /* Ocupa toda la altura disponible */
+    padding: 10px;
+}
+#divi {
+    border: 1px solid #d3d3d3; /* Color gris claro */
+    border-radius: 5px;
+    margin: 25px;
+    max-width: 46%;
+}
+.nombre {
+  margin: 20px;
+  font-size: 32px;
+  font-style: italic;
+  font-weight: bold;
+}
+/* Contenedor para likes y dislikes */
+.like-container,
+.dislike-container {
+    display: flex;
+    align-items: center;
+    gap: 4px; /* Ajusta el espacio entre el número y el icono */
+    padding: 4px; /* Añade espacio interno si es necesario */
+}
+
+/* Ajustes adicionales para likes */
+.like-container {
+    margin-right: 20px; /* Espacio a la derecha de los likes */
+}
+
+/* Ajustes adicionales para dislikes */
+.dislike-container {
+    margin-left: 20px; /* Espacio a la izquierda de los dislikes */
+}
+
+/* Ajusta el padding y otros estilos del contenedor principal si es necesario */
+.surface-0 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Asegura que likes y dislikes se separen adecuadamente */
+    padding: 10px; /* Ajusta el padding según tus necesidades */
+    gap: 40px; /* Añade espacio entre los contenedores de likes y dislikes */
+}
+
+/* Si necesitas ajustar el espaciado global entre elementos */
+.surface-100.p-1 {
+    padding: 10px; /* Ajusta el padding interno si es necesario */
+}
+

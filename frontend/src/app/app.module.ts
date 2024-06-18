@@ -21,6 +21,18 @@ import { FooterComponent } from './componentes/footer/footer.component';
 import { AdminComponent } from './componentes/admin/admin.component';
 import { TableModule } from 'primeng/table';
 import { ColorPickerComponent } from './componentes/color-picker/color-picker.component';
+import { UserVideosComponent } from './componentes/user-videos/user-videos.component';
+// Importa los módulos de PrimeNG
+import { ButtonModule } from 'primeng/button';
+import { RippleModule } from 'primeng/ripple';
+import { ToastModule } from 'primeng/toast';
+import { DialogModule } from 'primeng/dialog';
+import { VideosComponent } from './componentes/videos/videos.component';
+import { DataViewModule } from 'primeng/dataview';
+import { TagModule } from 'primeng/tag';
+import { CommonModule } from '@angular/common';
+import { VideoReproductorComponent } from './componentes/video-reproductor/video-reproductor.component';
+
 
 @NgModule({
   declarations: [
@@ -33,6 +45,9 @@ import { ColorPickerComponent } from './componentes/color-picker/color-picker.co
     FooterComponent,
     AdminComponent,
     ColorPickerComponent,
+    UserVideosComponent,
+    VideosComponent,
+    VideoReproductorComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +62,13 @@ import { ColorPickerComponent } from './componentes/color-picker/color-picker.co
     BrowserAnimationsModule,
     ImageModule,
     TableModule,
+    ButtonModule,
+    RippleModule,
+    ToastModule,
+    DialogModule,
+    DataViewModule,
+    TagModule,
+    CommonModule
   ],
   providers: [
     provideClientHydration()

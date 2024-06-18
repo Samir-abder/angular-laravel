@@ -1,0 +1,23 @@
+.badi {
+    padding: 10%;
+}
+#cardTable {
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+#pb {
+    
+}
+#videoR{
+    height: 300px;
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#imagenP{
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+}
