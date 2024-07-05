@@ -9,10 +9,10 @@
     border-radius: 50px;
     display: flex;
     align-items: center;
-    
-    
+
+
   }
-  
+
   video {
     max-height: 450px;
     display: flex;
@@ -22,14 +22,77 @@
     outline: none; /* Elimina el contorno alrededor del video cuando está enfocado */
     border-radius: 30px;
   }
-  
+
   .h3 {
     font-size: 1.5rem;
     font-weight: bold;
     margin: 0;
     color: #000;
   }
+  .comments-container {
+    max-width: 70%;
+    margin: 0 auto;
+    padding: 40px;
+    border: 1px solid #ccc;
+    border-radius: 50px;
 
+  }
+
+  .comments-container > h3 {
+    margin-top: 0;
+  }
+
+  .comment-form {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px; /* Añade un margen inferior más grande para separar el formulario de comentarios de la lista de comentarios */
+  }
+
+  .comment-form input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+
+  .comment-form button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+  }
+  .comments-list {
+    margin-top: 40px;
+    margin-bottom: 20px;/* Añade un margen superior para separar la lista de comentarios del formulario de comentarios */
+    padding-left: 20px; /* Añade un padding izquierdo para mover la lista de comentarios un poco a la derecha */
+  }
+
+  .comments-list .comment:not(:last-child) {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+  .comments-list.comment {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .comments-list.comment:last-child {
+    border-bottom: none;
+  }
+
+  .comments-list.comment p {
+    margin-top: 0;
+  }
+
+  .comments-list.comment span {
+    font-size: 14px;
+    color: #666;
+  }
 .details{
     display: flex;
     justify-content: space-between;
@@ -59,11 +122,11 @@
     --tooltip-padding-y: 7px;
     --tooltip-offset: 8px;
     /* --tooltip-transition-duration: 0.3s; */
-    /* 👆 if you need a transition, 
+    /* 👆 if you need a transition,
     just remove the comment,
     but I didn't like the transition :| */
   }
-  
+
   .copy {
     box-sizing: border-box;
     width: var(--button-diameter);
@@ -76,7 +139,7 @@
     position: relative;
     outline: none;
   }
-  
+
   .tooltip {
     position: absolute;
     opacity: 0;
@@ -94,11 +157,11 @@
     transition: all var(--tooltip-transition-duration)
       cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
-  
+
   .tooltip::before {
     content: attr(data-text-initial);
   }
-  
+
   .tooltip::after {
     content: "";
     position: absolute;
@@ -111,48 +174,48 @@
     z-index: -999;
     pointer-events: none;
   }
-  
+
   .copy svg {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
-  
+
   .checkmark {
     display: none;
   }
-  
+
   /* actions */
-  
+
   .copy:hover .tooltip,
   .copy:focus:not(:focus-visible) .tooltip {
     opacity: 1;
     visibility: visible;
     top: calc((100% + var(--tooltip-offset)) * -1);
   }
-  
+
   .copy:focus:not(:focus-visible) .tooltip::before {
     content: attr(data-text-end);
   }
-  
+
   .copy:focus:not(:focus-visible) .clipboard {
     display: none;
   }
-  
+
   .copy:focus:not(:focus-visible) .checkmark {
     display: block;
   }
-  
+
   .copy:hover,
   .copy:focus {
     background-color: var(--button-hover-bg);
   }
-  
+
   .copy:active {
     outline: var(--button-outline-width) solid var(--button-outline-color);
   }
-  
+
   .copy:hover svg {
     color: var(--button-hover-text-color);
   }
@@ -169,27 +232,27 @@
     user-select: none;
     fill: var(--color);
   }
-  
+
   .container .thumbs-up-regular {
     position: absolute;
     animation: keyframes-fill .5s;
   }
-  
+
   .container .thumbs-up-solid {
     position: absolute;
     display: none;
     animation: keyframes-fill .5s;
   }
-  
+
   /* ------ On check event ------ */
   .container input:checked ~ .thumbs-up-regular {
     display: none;
   }
-  
+
   .container input:checked ~ .thumbs-up-solid {
     display: block;
   }
-  
+
   /* ------ Hide the default checkbox ------ */
   .container input {
     position: absolute;
@@ -198,14 +261,14 @@
     height: 0;
     width: 0;
   }
-  
+
   /* ------ Animation ------ */
   @keyframes keyframes-fill {
     0% {
       transform: scale(0);
       opacity: 0;
     }
-  
+
     50% {
       transform: scale(1.2) rotate(-10deg);
     }
@@ -217,14 +280,14 @@
     height: 0;
     width: 0;
   }
-  
+
   .container {
     display: block;
     position: relative;
     cursor: pointer;
     user-select: none;
   }
-  
+
   svg {
     position: relative;
     top: 0;
@@ -234,18 +297,18 @@
     transition: all 0.3s;
     fill: #666;
   }
-  
+
   svg:hover {
     transform: scale(1.1) rotate(-10deg);
   }
-  
+
   .container input:checked ~ svg {
     fill: rgb(185, 51, 51);
   }
   ul {
     list-style: none;
   }
-  
+
   .example-2 {
     display: flex;
     justify-content: center;

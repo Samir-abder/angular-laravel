@@ -1,4 +1,7 @@
 import {
+  CommonModule
+} from "./chunk-XAS4SJBG.js";
+import {
   Component,
   Directive,
   Injectable,
@@ -9,7 +12,6 @@ import {
   TemplateRef,
   setClassMetadata,
   signal,
-  ɵɵStandaloneFeature,
   ɵɵdefineComponent,
   ɵɵdefineDirective,
   ɵɵdefineInjectable,
@@ -619,9 +621,8 @@ var FilterService = class _FilterService {
       if (value === void 0 || value === null) {
         return false;
       }
-      const valueCopy = new Date(value);
-      valueCopy.setHours(0, 0, 0, 0);
-      return valueCopy.getTime() > filter.getTime();
+      value.setHours(0, 0, 0, 0);
+      return value.getTime() > filter.getTime();
     }
   };
   register(rule, fn) {
@@ -716,7 +717,6 @@ var OverlayService = class _OverlayService {
   }], null, null);
 })();
 var PrimeIcons = class {
-  static ADDRESS_BOOK = "pi pi-address-book";
   static ALIGN_CENTER = "pi pi-align-center";
   static ALIGN_JUSTIFY = "pi pi-align-justify";
   static ALIGN_LEFT = "pi pi-align-left";
@@ -739,7 +739,6 @@ var PrimeIcons = class {
   static ARROW_CIRCLE_UP = "pi pi-arrow-circle-up";
   static ARROW_DOWN = "pi pi-arrow-down";
   static ARROW_DOWN_LEFT = "pi pi-arrow-down-left";
-  static ARROW_DOWN_LEFT_AND_ARROW_UP_RIGHT_TO_CENTER = "pi pi-arrow-down-left-and-arrow-up-right-to-center";
   static ARROW_DOWN_RIGHT = "pi pi-arrow-down-right";
   static ARROW_LEFT = "pi pi-arrow-left";
   static ARROW_RIGHT_ARROW_LEFT = "pi pi-arrow-right-arrow-left";
@@ -747,17 +746,13 @@ var PrimeIcons = class {
   static ARROW_UP = "pi pi-arrow-up";
   static ARROW_UP_LEFT = "pi pi-arrow-up-left";
   static ARROW_UP_RIGHT = "pi pi-arrow-up-right";
-  static ARROW_UP_RIGHT_AND_ARROW_DOWN_LEFT_FROM_CENTER = "pi pi-arrow-up-right-and-arrow-down-left-from-center";
   static ARROW_H = "pi pi-arrows-h";
   static ARROW_V = "pi pi-arrows-v";
-  static ASTERIKS = "pi pi-asteriks";
   static AT = "pi pi-at";
   static BACKWARD = "pi pi-backward";
   static BAN = "pi pi-ban";
-  static BARCODE = "pi pi-barcode";
   static BARS = "pi pi-bars";
   static BELL = "pi pi-bell";
-  static BELL_SLASH = "pi pi-bell-slash";
   static BITCOIN = "pi pi-bitcoin";
   static BOLT = "pi pi-bolt";
   static BOOK = "pi pi-book";
@@ -766,11 +761,8 @@ var PrimeIcons = class {
   static BOX = "pi pi-box";
   static BRIEFCASE = "pi pi-briefcase";
   static BUILDING = "pi pi-building";
-  static BUILDING_COLUMNS = "pi pi-building-columns";
-  static BULLSEYE = "pi pi-bullseye";
   static CALCULATOR = "pi pi-calculator";
   static CALENDAR = "pi pi-calendar";
-  static CALENDAR_CLOCK = "pi pi-calendar-clock";
   static CALENDAR_MINUS = "pi pi-calendar-minus";
   static CALENDAR_PLUS = "pi pi-calendar-plus";
   static CALENDAR_TIMES = "pi pi-calendar-times";
@@ -780,13 +772,10 @@ var PrimeIcons = class {
   static CARET_LEFT = "pi pi-caret-left";
   static CARET_RIGHT = "pi pi-caret-right";
   static CARET_UP = "pi pi-caret-up";
-  static CART_ARROW_DOWN = "pi pi-cart-arrow-down";
-  static CART_MINUS = "pi pi-cart-minus";
   static CART_PLUS = "pi pi-cart-plus";
   static CHART_BAR = "pi pi-chart-bar";
   static CHART_LINE = "pi pi-chart-line";
   static CHART_PIE = "pi pi-chart-pie";
-  static CHART_SCATTER = "pi pi-chart-scatter";
   static CHECK = "pi pi-check";
   static CHECK_CIRCLE = "pi pi-check-circle";
   static CHECK_SQUARE = "pi pi-check-square";
@@ -800,7 +789,6 @@ var PrimeIcons = class {
   static CHEVRON_UP = "pi pi-chevron-up";
   static CIRCLE = "pi pi-circle";
   static CIRCLE_FILL = "pi pi-circle-fill";
-  static CLIPBOARD = "pi pi-clipboard";
   static CLOCK = "pi pi-clock";
   static CLONE = "pi pi-clone";
   static CLOUD = "pi pi-cloud";
@@ -813,7 +801,6 @@ var PrimeIcons = class {
   static COMPASS = "pi pi-compass";
   static COPY = "pi pi-copy";
   static CREDIT_CARD = "pi pi-credit-card";
-  static CROWN = "pi pi-crown";
   static DATABASE = "pi pi-database";
   static DESKTOP = "pi pi-desktop";
   static DELETE_LEFT = "pi pi-delete-left";
@@ -826,27 +813,20 @@ var PrimeIcons = class {
   static ELLIPSIS_H = "pi pi-ellipsis-h";
   static ELLIPSIS_V = "pi pi-ellipsis-v";
   static ENVELOPE = "pi pi-envelope";
-  static EQUALS = "pi pi-equals";
   static ERASER = "pi pi-eraser";
-  static ETHEREUM = "pi pi-ethereum";
   static EURO = "pi pi-euro";
   static EXCLAMATION_CIRCLE = "pi pi-exclamation-circle";
   static EXCLAMATION_TRIANGLE = "pi pi-exclamation-triangle";
-  static EXPAND = "pi pi-expand";
   static EXTERNAL_LINK = "pi pi-external-link";
   static EYE = "pi pi-eye";
   static EYE_SLASH = "pi pi-eye-slash";
-  static FACE_SMILE = "pi pi-face-smile";
   static FACEBOOK = "pi pi-facebook";
   static FAST_BACKWARD = "pi pi-fast-backward";
   static FAST_FORWARD = "pi pi-fast-forward";
   static FILE = "pi pi-file";
-  static FILE_ARROW_UP = "pi pi-file-arrow-up";
-  static FILE_CHECK = "pi pi-file-check";
   static FILE_EDIT = "pi pi-file-edit";
   static FILE_IMPORT = "pi pi-file-import";
   static FILE_PDF = "pi pi-file-pdf";
-  static FILE_PLUS = "pi pi-file-plus";
   static FILE_EXCEL = "pi pi-file-excel";
   static FILE_EXPORT = "pi pi-file-export";
   static FILE_WORD = "pi pi-file-word";
@@ -857,17 +837,12 @@ var PrimeIcons = class {
   static FLAG_FILL = "pi pi-flag-fill";
   static FOLDER = "pi pi-folder";
   static FOLDER_OPEN = "pi pi-folder-open";
-  static FOLDER_PLUS = "pi pi-folder-plus";
   static FORWARD = "pi pi-forward";
-  static GAUGE = "pi pi-gauge";
   static GIFT = "pi pi-gift";
   static GITHUB = "pi pi-github";
   static GLOBE = "pi pi-globe";
   static GOOGLE = "pi pi-google";
-  static GRADUATION_CAP = "pi pi-graduation-cap";
-  static HAMMER = "pi pi-hammer";
   static HASHTAG = "pi pi-hashtag";
-  static HEADPHONES = "pi pi-headphones";
   static HEART = "pi pi-heart";
   static HEART_FILL = "pi pi-heart-fill";
   static HISTORY = "pi pi-history";
@@ -877,25 +852,19 @@ var PrimeIcons = class {
   static IMAGE = "pi pi-image";
   static IMAGES = "pi pi-images";
   static INBOX = "pi pi-inbox";
-  static INDIAN_RUPEE = "pi pi-indian-rupee";
   static INFO = "pi pi-info";
   static INFO_CIRCLE = "pi pi-info-circle";
   static INSTAGRAM = "pi pi-instagram";
   static KEY = "pi pi-key";
   static LANGUAGE = "pi pi-language";
-  static LIGHTBULB = "pi pi-lightbulb";
   static LINK = "pi pi-link";
   static LINKEDIN = "pi pi-linkedin";
   static LIST = "pi pi-list";
-  static LIST_CHECK = "pi pi-list-check";
   static LOCK = "pi pi-lock";
   static LOCK_OPEN = "pi pi-lock-open";
   static MAP = "pi pi-map";
   static MAP_MARKER = "pi pi-map-marker";
-  static MARS = "pi pi-mars";
   static MEGAPHONE = "pi pi-megaphone";
-  static MICROCHIP = "pi pi-microchip";
-  static MICROCHIP_AI = "pi pi-microchip-ai";
   static MICROPHONE = "pi pi-microphone";
   static MICROSOFT = "pi pi-microsoft";
   static MINUS = "pi pi-minus";
@@ -903,19 +872,14 @@ var PrimeIcons = class {
   static MOBILE = "pi pi-mobile";
   static MONEY_BILL = "pi pi-money-bill";
   static MOON = "pi pi-moon";
-  static OBJECTS_COLUMN = "pi pi-objects-column";
   static PALETTE = "pi pi-palette";
   static PAPERCLIP = "pi pi-paperclip";
   static PAUSE = "pi pi-pause";
-  static PAUSE_CIRCLE = "pi pi-pause-circle";
   static PAYPAL = "pi pi-paypal";
-  static PEN_TO_SQUARE = "pi pi-pen-to-square";
   static PENCIL = "pi pi-pencil";
   static PERCENTAGE = "pi pi-percentage";
   static PHONE = "pi pi-phone";
-  static PINTEREST = "pi pi-pinterest";
   static PLAY = "pi pi-play";
-  static PLAY_CIRCLE = "pi pi-play-circle";
   static PLUS = "pi pi-plus";
   static PLUS_CIRCLE = "pi pi-plus-circle";
   static POUND = "pi pi-pound";
@@ -925,7 +889,6 @@ var PrimeIcons = class {
   static QRCODE = "pi pi-qrcode";
   static QUESTION = "pi pi-question";
   static QUESTION_CIRCLE = "pi pi-question-circle";
-  static RECEIPT = "pi pi-receipt";
   static REDDIT = "pi pi-reddit";
   static REFRESH = "pi pi-refresh";
   static REPLAY = "pi pi-replay";
@@ -938,7 +901,6 @@ var PrimeIcons = class {
   static SERVER = "pi pi-server";
   static SHARE_ALT = "pi pi-share-alt";
   static SHIELD = "pi pi-shield";
-  static SHOP = "pi pi-shop";
   static SHOPPING_BAG = "pi pi-shopping-bag";
   static SHOPPING_CART = "pi pi-shopping-cart";
   static SIGN_IN = "pi pi-sign-in";
@@ -959,20 +921,14 @@ var PrimeIcons = class {
   static SORT_AMOUNT_UP = "pi pi-sort-amount-up";
   static SORT_AMOUNT_UP_ALT = "pi pi-sort-amount-up-alt";
   static SORT_DOWN = "pi pi-sort-down";
-  static SORT_DOWN_FILL = "pi pi-sort-down-fill";
   static SORT_NUMERIC_DOWN = "pi pi-sort-numeric-down";
   static SORT_NUMERIC_DOWN_ALT = "pi pi-sort-numeric-down-alt";
   static SORT_NUMERIC_UP = "pi pi-sort-numeric-up";
   static SORT_NUMERIC_UP_ALT = "pi pi-sort-numeric-up-alt";
   static SORT_UP = "pi pi-sort-up";
-  static SORT_UP_FILL = "pi pi-sort-up-fill";
-  static SPARKLES = "pi pi-sparkles";
   static SPINNER = "pi pi-spinner";
-  static SPINNER_DOTTED = "pi pi-spinner-dotted";
   static STAR = "pi pi-star";
   static STAR_FILL = "pi pi-star-fill";
-  static STAR_HALF = "pi pi-star-half";
-  static STAR_HALF_FILL = "pi pi-star-half-fill";
   static STEP_BACKWARD = "pi pi-step-backward";
   static STEP_BACKWARD_ALT = "pi pi-step-backward-alt";
   static STEP_FORWARD = "pi pi-step-forward";
@@ -992,16 +948,11 @@ var PrimeIcons = class {
   static THUMBS_DOWN_FILL = "pi pi-thumbs-down-fill";
   static THUMBS_UP = "pi pi-thumbs-up";
   static THUMBS_UP_FILL = "pi pi-thumbs-up-fill";
-  static THUMBTACK = "pi pi-thumbtack";
   static TICKET = "pi pi-ticket";
-  static TIKTOK = "pi pi-tiktok";
   static TIMES = "pi pi-times";
   static TIMES_CIRCLE = "pi pi-times-circle";
   static TRASH = "pi pi-trash";
-  static TROPHY = "pi pi-trophy";
   static TRUCK = "pi pi-truck";
-  static TURKISH_LIRA = "pi pi-turkish-lira";
-  static TWITCH = "pi pi-twitch";
   static TWITTER = "pi pi-twitter";
   static UNDO = "pi pi-undo";
   static UNLOCK = "pi pi-unlock";
@@ -1011,7 +962,6 @@ var PrimeIcons = class {
   static USER_MINUS = "pi pi-user-minus";
   static USER_PLUS = "pi pi-user-plus";
   static USERS = "pi pi-users";
-  static VENUS = "pi pi-venus";
   static VERIFIED = "pi pi-verified";
   static VIDEO = "pi pi-video";
   static VIMEO = "pi pi-vimeo";
@@ -1019,8 +969,6 @@ var PrimeIcons = class {
   static VOLUME_OFF = "pi pi-volume-off";
   static VOLUME_UP = "pi pi-volume-up";
   static WALLET = "pi pi-wallet";
-  static WAREHOUSE = "pi pi-warehouse";
-  static WAVE_PULSE = "pi pi-wave-pulse";
   static WHATSAPP = "pi pi-whatsapp";
   static WIFI = "pi pi-wifi";
   static WINDOW_MAXIMIZE = "pi pi-window-maximize";
@@ -1032,9 +980,6 @@ var PrimeNGConfig = class _PrimeNGConfig {
   ripple = false;
   inputStyle = signal("outlined");
   overlayOptions = {};
-  csp = signal({
-    nonce: void 0
-  });
   filterMatchModeOptions = {
     text: [FilterMatchMode.STARTS_WITH, FilterMatchMode.CONTAINS, FilterMatchMode.NOT_CONTAINS, FilterMatchMode.ENDS_WITH, FilterMatchMode.EQUALS, FilterMatchMode.NOT_EQUALS],
     numeric: [FilterMatchMode.EQUALS, FilterMatchMode.NOT_EQUALS, FilterMatchMode.LESS_THAN, FilterMatchMode.LESS_THAN_OR_EQUAL_TO, FilterMatchMode.GREATER_THAN, FilterMatchMode.GREATER_THAN_OR_EQUAL_TO],
@@ -1205,8 +1150,6 @@ var Header = class _Header {
   static ɵcmp = ɵɵdefineComponent({
     type: _Header,
     selectors: [["p-header"]],
-    standalone: true,
-    features: [ɵɵStandaloneFeature],
     ngContentSelectors: _c0,
     decls: 1,
     vars: 0,
@@ -1224,7 +1167,6 @@ var Header = class _Header {
     type: Component,
     args: [{
       selector: "p-header",
-      standalone: true,
       template: "<ng-content></ng-content>"
     }]
   }], null, null);
@@ -1236,8 +1178,6 @@ var Footer = class _Footer {
   static ɵcmp = ɵɵdefineComponent({
     type: _Footer,
     selectors: [["p-footer"]],
-    standalone: true,
-    features: [ɵɵStandaloneFeature],
     ngContentSelectors: _c0,
     decls: 1,
     vars: 0,
@@ -1255,7 +1195,6 @@ var Footer = class _Footer {
     type: Component,
     args: [{
       selector: "p-footer",
-      standalone: true,
       template: "<ng-content></ng-content>"
     }]
   }], null, null);
@@ -1279,8 +1218,7 @@ var PrimeTemplate = class _PrimeTemplate {
     inputs: {
       type: "type",
       name: [InputFlags.None, "pTemplate", "name"]
-    },
-    standalone: true
+    }
   });
 };
 (() => {
@@ -1288,7 +1226,6 @@ var PrimeTemplate = class _PrimeTemplate {
     type: Directive,
     args: [{
       selector: "[pTemplate]",
-      standalone: true,
       host: {}
     }]
   }], () => [{
@@ -1309,17 +1246,21 @@ var SharedModule = class _SharedModule {
   };
   static ɵmod = ɵɵdefineNgModule({
     type: _SharedModule,
-    imports: [Header, Footer, PrimeTemplate],
+    declarations: [Header, Footer, PrimeTemplate],
+    imports: [CommonModule],
     exports: [Header, Footer, PrimeTemplate]
   });
-  static ɵinj = ɵɵdefineInjector({});
+  static ɵinj = ɵɵdefineInjector({
+    imports: [CommonModule]
+  });
 };
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(SharedModule, [{
     type: NgModule,
     args: [{
-      imports: [Header, Footer, PrimeTemplate],
-      exports: [Header, Footer, PrimeTemplate]
+      imports: [CommonModule],
+      exports: [Header, Footer, PrimeTemplate],
+      declarations: [Header, Footer, PrimeTemplate]
     }]
   }], null, null);
 })();
@@ -1419,4 +1360,4 @@ export {
   TranslationKeys,
   TreeDragDropService
 };
-//# sourceMappingURL=chunk-I7XBFZ65.js.map
+//# sourceMappingURL=chunk-RIYG23RS.js.map

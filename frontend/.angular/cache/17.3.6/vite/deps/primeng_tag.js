@@ -1,7 +1,7 @@
 import {
   PrimeTemplate,
   SharedModule
-} from "./chunk-I7XBFZ65.js";
+} from "./chunk-RIYG23RS.js";
 import {
   CommonModule,
   NgClass,
@@ -144,7 +144,10 @@ var Tag = class _Tag {
   containerClass() {
     return {
       "p-tag p-component": true,
-      [`p-tag-${this.severity}`]: this.severity,
+      "p-tag-info": this.severity === "info",
+      "p-tag-success": this.severity === "success",
+      "p-tag-warning": this.severity === "warning",
+      "p-tag-danger": this.severity === "danger",
       "p-tag-rounded": this.rounded
     };
   }

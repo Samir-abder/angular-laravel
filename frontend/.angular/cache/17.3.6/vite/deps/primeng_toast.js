@@ -1,28 +1,17 @@
 import {
   CheckIcon
-} from "./chunk-PINZHIE4.js";
-import {
-  TimesIcon
-} from "./chunk-KJOK2GAM.js";
-import {
-  BaseIcon
-} from "./chunk-VHYVE2LJ.js";
+} from "./chunk-6FDGVNPQ.js";
 import {
   Ripple,
   RippleModule
-} from "./chunk-ZQSUHRAR.js";
+} from "./chunk-GYMXIBTA.js";
 import {
-  DomHandler
-} from "./chunk-TKJMWDM5.js";
+  TimesIcon
+} from "./chunk-S4B725QZ.js";
 import {
-  MessageService,
-  ObjectUtils,
-  PrimeNGConfig,
-  PrimeTemplate,
-  SharedModule,
-  UniqueComponentId,
-  zindexutils
-} from "./chunk-I7XBFZ65.js";
+  BaseIcon
+} from "./chunk-CSOYK6LG.js";
+import "./chunk-LZMSIMQG.js";
 import {
   animate,
   animateChild,
@@ -32,6 +21,15 @@ import {
   transition,
   trigger
 } from "./chunk-NKNN6QKT.js";
+import {
+  MessageService,
+  ObjectUtils,
+  PrimeNGConfig,
+  PrimeTemplate,
+  SharedModule,
+  UniqueComponentId,
+  zindexutils
+} from "./chunk-RIYG23RS.js";
 import {
   CommonModule,
   DOCUMENT,
@@ -1007,7 +1005,6 @@ var Toast = class _Toast {
                 `;
       }
       this.renderer.setProperty(this.styleElement, "innerHTML", innerHTML);
-      DomHandler.setAttribute(this.styleElement, "nonce", this.config?.csp()?.nonce);
     }
   }
   destroyStyle() {

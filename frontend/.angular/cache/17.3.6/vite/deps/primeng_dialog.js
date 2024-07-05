@@ -1,24 +1,32 @@
 import {
   ButtonDirective,
   ButtonModule
-} from "./chunk-BX375DIK.js";
-import {
-  FocusTrap,
-  FocusTrapModule
-} from "./chunk-LHNG3S4N.js";
-import {
-  TimesIcon
-} from "./chunk-KJOK2GAM.js";
-import {
-  BaseIcon
-} from "./chunk-VHYVE2LJ.js";
+} from "./chunk-UQDLSMQ7.js";
 import {
   Ripple,
   RippleModule
-} from "./chunk-ZQSUHRAR.js";
+} from "./chunk-GYMXIBTA.js";
+import {
+  FocusTrap,
+  FocusTrapModule
+} from "./chunk-36UWQQHT.js";
+import {
+  TimesIcon
+} from "./chunk-S4B725QZ.js";
+import {
+  BaseIcon
+} from "./chunk-CSOYK6LG.js";
 import {
   DomHandler
-} from "./chunk-TKJMWDM5.js";
+} from "./chunk-LZMSIMQG.js";
+import {
+  animate,
+  animation,
+  style,
+  transition,
+  trigger,
+  useAnimation
+} from "./chunk-NKNN6QKT.js";
 import {
   Footer,
   Header,
@@ -28,15 +36,7 @@ import {
   TranslationKeys,
   UniqueComponentId,
   zindexutils
-} from "./chunk-I7XBFZ65.js";
-import {
-  animate,
-  animation,
-  style,
-  transition,
-  trigger,
-  useAnimation
-} from "./chunk-NKNN6QKT.js";
+} from "./chunk-RIYG23RS.js";
 import {
   CommonModule,
   DOCUMENT,
@@ -1053,7 +1053,7 @@ var Dialog = class _Dialog {
   getAriaLabelledBy() {
     return this.header !== null ? UniqueComponentId() + "_header" : null;
   }
-  focus(focusParentElement = this.contentViewChild?.nativeElement) {
+  focus(focusParentElement = this.contentViewChild.nativeElement) {
     let focusable = DomHandler.getFocusableElement(focusParentElement, "[autofocus]");
     if (focusable) {
       this.zone.runOutsideAngular(() => {
@@ -1142,7 +1142,6 @@ var Dialog = class _Dialog {
                     `;
         }
         this.renderer.setProperty(this.styleElement, "innerHTML", innerHTML);
-        DomHandler.setAttribute(this.styleElement, "nonce", this.config?.csp()?.nonce);
       }
     }
   }

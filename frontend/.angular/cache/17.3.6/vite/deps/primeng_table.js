@@ -8,48 +8,35 @@ import {
   PaginatorModule,
   Scroller,
   ScrollerModule
-} from "./chunk-RUQ4OG6L.js";
-import {
-  InputText,
-  InputTextModule
-} from "./chunk-6VTLWO44.js";
+} from "./chunk-S37FM5HY.js";
 import {
   CheckIcon
-} from "./chunk-PINZHIE4.js";
+} from "./chunk-6FDGVNPQ.js";
 import {
   AutoFocus,
   AutoFocusModule,
   ButtonDirective,
   ButtonModule,
   SpinnerIcon
-} from "./chunk-BX375DIK.js";
-import {
-  TimesIcon
-} from "./chunk-KJOK2GAM.js";
-import {
-  BaseIcon
-} from "./chunk-VHYVE2LJ.js";
+} from "./chunk-UQDLSMQ7.js";
 import {
   Ripple,
   RippleModule
-} from "./chunk-ZQSUHRAR.js";
+} from "./chunk-GYMXIBTA.js";
+import {
+  TimesIcon
+} from "./chunk-S4B725QZ.js";
+import {
+  BaseIcon
+} from "./chunk-CSOYK6LG.js";
 import {
   ConnectedOverlayScrollHandler,
   DomHandler
-} from "./chunk-TKJMWDM5.js";
+} from "./chunk-LZMSIMQG.js";
 import {
-  FilterMatchMode,
-  FilterOperator,
-  FilterService,
-  ObjectUtils,
-  OverlayService,
-  PrimeNGConfig,
-  PrimeTemplate,
-  SharedModule,
-  TranslationKeys,
-  UniqueComponentId,
-  zindexutils
-} from "./chunk-I7XBFZ65.js";
+  InputText,
+  InputTextModule
+} from "./chunk-MEYW6HYB.js";
 import {
   animate,
   state,
@@ -63,6 +50,19 @@ import {
   NgControlStatus,
   NgModel
 } from "./chunk-73SYDGCU.js";
+import {
+  FilterMatchMode,
+  FilterOperator,
+  FilterService,
+  ObjectUtils,
+  OverlayService,
+  PrimeNGConfig,
+  PrimeTemplate,
+  SharedModule,
+  TranslationKeys,
+  UniqueComponentId,
+  zindexutils
+} from "./chunk-RIYG23RS.js";
 import {
   CommonModule,
   DOCUMENT,
@@ -893,8 +893,7 @@ function Calendar_div_3_ng_container_4_div_2_div_10_tr_7_td_2_ng_container_1_Tem
     const date_r17 = ɵɵnextContext().$implicit;
     const ctx_r1 = ɵɵnextContext(6);
     ɵɵadvance();
-    ɵɵproperty("ngClass", ɵɵpureFunction2(6, _c14, ctx_r1.isSelected(date_r17) && date_r17.selectable, !date_r17.selectable));
-    ɵɵattribute("data-date", ctx_r1.formatDateKey(ctx_r1.formatDateMetaToDate(date_r17)));
+    ɵɵproperty("ngClass", ɵɵpureFunction2(5, _c14, ctx_r1.isSelected(date_r17) && date_r17.selectable, !date_r17.selectable));
     ɵɵadvance();
     ɵɵproperty("ngIf", !ctx_r1.dateTemplate && (date_r17.selectable || !ctx_r1.disabledDateTemplate));
     ɵɵadvance();
@@ -908,7 +907,7 @@ function Calendar_div_3_ng_container_4_div_2_div_10_tr_7_td_2_ng_container_1_Tem
 function Calendar_div_3_ng_container_4_div_2_div_10_tr_7_td_2_Template(rf, ctx) {
   if (rf & 1) {
     ɵɵelementStart(0, "td", 16);
-    ɵɵtemplate(1, Calendar_div_3_ng_container_4_div_2_div_10_tr_7_td_2_ng_container_1_Template, 6, 9, "ng-container", 7);
+    ɵɵtemplate(1, Calendar_div_3_ng_container_4_div_2_div_10_tr_7_td_2_ng_container_1_Template, 6, 8, "ng-container", 7);
     ɵɵelementEnd();
   }
   if (rf & 2) {
@@ -1839,11 +1838,6 @@ var Calendar = class _Calendar {
    */
   timeOnly;
   /**
-   * Years to change per step in yearpicker.
-   * @group Props
-   */
-  stepYearPicker = 10;
-  /**
    * Hours to change per step.
    * @group Props
    */
@@ -2301,7 +2295,6 @@ var Calendar = class _Calendar {
   _view = "date";
   preventFocus;
   _defaultDate;
-  _focusKey = null;
   window;
   get locale() {
     return this._locale;
@@ -2431,8 +2424,8 @@ var Calendar = class _Calendar {
   }
   yearPickerValues() {
     let yearPickerValues = [];
-    let base = this.currentYear - this.currentYear % this.stepYearPicker;
-    for (let i = 0; i < this.stepYearPicker; i++) {
+    let base = this.currentYear - this.currentYear % 10;
+    for (let i = 0; i < 10; i++) {
       yearPickerValues.push(base + i);
     }
     return yearPickerValues;
@@ -2556,7 +2549,7 @@ var Calendar = class _Calendar {
         this.updateFocus();
       }, 1);
     } else if (this.currentView === "year") {
-      this.decrementYearPickerStep();
+      this.decrementDecade();
       setTimeout(() => {
         this.updateFocus();
       }, 1);
@@ -2586,7 +2579,7 @@ var Calendar = class _Calendar {
         this.updateFocus();
       }, 1);
     } else if (this.currentView === "year") {
-      this.incrementYearPickerStep();
+      this.incrementDecade();
       setTimeout(() => {
         this.updateFocus();
       }, 1);
@@ -2612,11 +2605,11 @@ var Calendar = class _Calendar {
       this.populateYearOptions(_yearOptions[0] - difference, _yearOptions[_yearOptions.length - 1] - difference);
     }
   }
-  decrementYearPickerStep() {
-    this.currentYear = this.currentYear - this.stepYearPicker;
+  decrementDecade() {
+    this.currentYear = this.currentYear - 10;
   }
-  incrementYearPickerStep() {
-    this.currentYear = this.currentYear + this.stepYearPicker;
+  incrementDecade() {
+    this.currentYear = this.currentYear + 10;
   }
   incrementYear() {
     this.currentYear++;
@@ -2652,7 +2645,7 @@ var Calendar = class _Calendar {
         this.selectDate(dateMeta);
       }
     }
-    if (this.hideOnDateTimeSelect && (this.isSingleSelection() || this.isRangeSelection() && this.value[1])) {
+    if (this.isSingleSelection() && this.hideOnDateTimeSelect || this.isRangeSelection() && this.value[1]) {
       setTimeout(() => {
         event2.preventDefault();
         this.hideOverlay();
@@ -2754,12 +2747,6 @@ var Calendar = class _Calendar {
     formattedValue = isDateValid ? formattedValue : "";
     return formattedValue;
   }
-  formatDateMetaToDate(dateMeta) {
-    return new Date(dateMeta.year, dateMeta.month, dateMeta.day);
-  }
-  formatDateKey(date) {
-    return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
-  }
   setCurrentHourPM(hours) {
     if (this.hourFormat == "12") {
       this.pm = hours > 11;
@@ -2778,7 +2765,7 @@ var Calendar = class _Calendar {
     this.alignOverlay();
   }
   selectDate(dateMeta) {
-    let date = this.formatDateMetaToDate(dateMeta);
+    let date = new Date(dateMeta.year, dateMeta.month, dateMeta.day);
     if (this.showTime) {
       if (this.hourFormat == "12") {
         if (this.currentHour === 12)
@@ -2949,7 +2936,7 @@ var Calendar = class _Calendar {
   isDateBetween(start, end, dateMeta) {
     let between = false;
     if (ObjectUtils.isDate(start) && ObjectUtils.isDate(end)) {
-      let date = this.formatDateMetaToDate(dateMeta);
+      let date = new Date(dateMeta.year, dateMeta.month, dateMeta.day);
       return start.getTime() <= date.getTime() && end.getTime() >= date.getTime();
     }
     return between;
@@ -3138,10 +3125,9 @@ var Calendar = class _Calendar {
       }
     }
   }
-  onDateCellKeydown(event2, dateMeta, groupIndex) {
+  onDateCellKeydown(event2, date, groupIndex) {
     const cellContent = event2.currentTarget;
     const cell = cellContent.parentElement;
-    const currentDate = this.formatDateMetaToDate(dateMeta);
     switch (event2.which) {
       case 40: {
         cellContent.tabIndex = "-1";
@@ -3227,7 +3213,7 @@ var Calendar = class _Calendar {
       }
       case 13:
       case 32: {
-        this.onDateSelect(event2, dateMeta);
+        this.onDateSelect(event2, date);
         event2.preventDefault();
         break;
       }
@@ -3243,44 +3229,6 @@ var Calendar = class _Calendar {
         }
         break;
       }
-      case 33: {
-        cellContent.tabIndex = "-1";
-        const dateToFocus = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, currentDate.getDate());
-        const focusKey = this.formatDateKey(dateToFocus);
-        this.navigateToMonth(true, groupIndex, `span[data-date='${focusKey}']:not(.p-disabled):not(.p-ink)`);
-        event2.preventDefault();
-        break;
-      }
-      case 34: {
-        cellContent.tabIndex = "-1";
-        const dateToFocus = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, currentDate.getDate());
-        const focusKey = this.formatDateKey(dateToFocus);
-        this.navigateToMonth(false, groupIndex, `span[data-date='${focusKey}']:not(.p-disabled):not(.p-ink)`);
-        event2.preventDefault();
-        break;
-      }
-      case 36:
-        cellContent.tabIndex = "-1";
-        const firstDayDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
-        const firstDayDateKey = this.formatDateKey(firstDayDate);
-        const firstDayCell = DomHandler.findSingle(cellContent.offsetParent, `span[data-date='${firstDayDateKey}']:not(.p-disabled):not(.p-ink)`);
-        if (firstDayCell) {
-          firstDayCell.tabIndex = "0";
-          firstDayCell.focus();
-        }
-        event2.preventDefault();
-        break;
-      case 35:
-        cellContent.tabIndex = "-1";
-        const lastDayDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
-        const lastDayDateKey = this.formatDateKey(lastDayDate);
-        const lastDayCell = DomHandler.findSingle(cellContent.offsetParent, `span[data-date='${lastDayDateKey}']:not(.p-disabled):not(.p-ink)`);
-        if (lastDayDate) {
-          lastDayCell.tabIndex = "0";
-          lastDayCell.focus();
-        }
-        event2.preventDefault();
-        break;
       default:
         break;
     }
@@ -3419,45 +3367,31 @@ var Calendar = class _Calendar {
         break;
     }
   }
-  navigateToMonth(prev, groupIndex, focusKey) {
+  navigateToMonth(prev, groupIndex) {
     if (prev) {
       if (this.numberOfMonths === 1 || groupIndex === 0) {
         this.navigationState = {
           backward: true
         };
-        this._focusKey = focusKey;
         this.navBackward(event);
       } else {
         let prevMonthContainer = this.contentViewChild.nativeElement.children[groupIndex - 1];
-        if (focusKey) {
-          const firstDayCell = DomHandler.findSingle(prevMonthContainer, focusKey);
-          firstDayCell.tabIndex = "0";
-          firstDayCell.focus();
-        } else {
-          let cells = DomHandler.find(prevMonthContainer, ".p-datepicker-calendar td span:not(.p-disabled):not(.p-ink)");
-          let focusCell = cells[cells.length - 1];
-          focusCell.tabIndex = "0";
-          focusCell.focus();
-        }
+        let cells = DomHandler.find(prevMonthContainer, ".p-datepicker-calendar td span:not(.p-disabled):not(.p-ink)");
+        let focusCell = cells[cells.length - 1];
+        focusCell.tabIndex = "0";
+        focusCell.focus();
       }
     } else {
       if (this.numberOfMonths === 1 || groupIndex === this.numberOfMonths - 1) {
         this.navigationState = {
           backward: false
         };
-        this._focusKey = focusKey;
         this.navForward(event);
       } else {
         let nextMonthContainer = this.contentViewChild.nativeElement.children[groupIndex + 1];
-        if (focusKey) {
-          const firstDayCell = DomHandler.findSingle(nextMonthContainer, focusKey);
-          firstDayCell.tabIndex = "0";
-          firstDayCell.focus();
-        } else {
-          let focusCell = DomHandler.findSingle(nextMonthContainer, ".p-datepicker-calendar td span:not(.p-disabled):not(.p-ink)");
-          focusCell.tabIndex = "0";
-          focusCell.focus();
-        }
+        let focusCell = DomHandler.findSingle(nextMonthContainer, ".p-datepicker-calendar td span:not(.p-disabled):not(.p-ink)");
+        focusCell.tabIndex = "0";
+        focusCell.focus();
       }
     }
   }
@@ -3478,7 +3412,7 @@ var Calendar = class _Calendar {
           } else if (this.currentView === "year") {
             cells = DomHandler.find(this.contentViewChild.nativeElement, ".p-yearpicker .p-yearpicker-year:not(.p-disabled)");
           } else {
-            cells = DomHandler.find(this.contentViewChild.nativeElement, this._focusKey || ".p-datepicker-calendar td span:not(.p-disabled):not(.p-ink)");
+            cells = DomHandler.find(this.contentViewChild.nativeElement, ".p-datepicker-calendar td span:not(.p-disabled):not(.p-ink)");
           }
           if (cells && cells.length > 0) {
             cell = cells[cells.length - 1];
@@ -3489,7 +3423,7 @@ var Calendar = class _Calendar {
           } else if (this.currentView === "year") {
             cell = DomHandler.findSingle(this.contentViewChild.nativeElement, ".p-yearpicker .p-yearpicker-year:not(.p-disabled)");
           } else {
-            cell = DomHandler.findSingle(this.contentViewChild.nativeElement, this._focusKey || ".p-datepicker-calendar td span:not(.p-disabled):not(.p-ink)");
+            cell = DomHandler.findSingle(this.contentViewChild.nativeElement, ".p-datepicker-calendar td span:not(.p-disabled):not(.p-ink)");
           }
         }
         if (cell) {
@@ -3498,11 +3432,9 @@ var Calendar = class _Calendar {
         }
       }
       this.navigationState = null;
-      this._focusKey = null;
     } else {
       this.initFocusableCell();
     }
-    this.alignOverlay();
   }
   initFocusableCell() {
     const contentEl = this.contentViewChild?.nativeElement;
@@ -3699,9 +3631,6 @@ var Calendar = class _Calendar {
   }
   toggleAMPMIfNotMinDate(newPM) {
     let value = this.value;
-    if ((this.selectionMode == "range" || this.selectionMode == "multiple") && Array.isArray(value) && value.length > 0) {
-      value = value[value.length - 1];
-    }
     const valueDateString = value ? value.toDateString() : null;
     let isMinDate = this.minDate && valueDateString && this.minDate.toDateString() === valueDateString;
     if (isMinDate && this.minDate.getHours() >= 12) {
@@ -3929,7 +3858,7 @@ var Calendar = class _Calendar {
   updateUI() {
     let propValue = this.value;
     if (Array.isArray(propValue)) {
-      propValue = propValue[1] || propValue[0];
+      propValue = propValue.length === 2 ? propValue[1] : propValue[0];
     }
     let val = this.defaultDate && this.isValidDate(this.defaultDate) && !this.value ? this.defaultDate : propValue && this.isValidDate(propValue) ? propValue : /* @__PURE__ */ new Date();
     this.currentMonth = val.getMonth();
@@ -4403,9 +4332,6 @@ var Calendar = class _Calendar {
     this.filled = this.inputFieldValue && this.inputFieldValue != "";
   }
   isValidDateForTimeConstraints(selectedDate) {
-    if (this.keepInvalid) {
-      return true;
-    }
     return (!this.minDate || selectedDate >= this.minDate) && (!this.maxDate || selectedDate <= this.maxDate);
   }
   onTodayButtonClick(event2) {
@@ -4465,7 +4391,6 @@ var Calendar = class _Calendar {
         }
       }
       this.responsiveStyleElement.innerHTML = innerHTML;
-      DomHandler.setAttribute(this.responsiveStyleElement, "nonce", this.config?.csp()?.nonce);
     }
   }
   destroyResponsiveStyleElement() {
@@ -4622,7 +4547,6 @@ var Calendar = class _Calendar {
       yearNavigator: [InputFlags.HasDecoratorInputTransform, "yearNavigator", "yearNavigator", booleanAttribute],
       hourFormat: "hourFormat",
       timeOnly: [InputFlags.HasDecoratorInputTransform, "timeOnly", "timeOnly", booleanAttribute],
-      stepYearPicker: [InputFlags.HasDecoratorInputTransform, "stepYearPicker", "stepYearPicker", numberAttribute],
       stepHour: [InputFlags.HasDecoratorInputTransform, "stepHour", "stepHour", numberAttribute],
       stepMinute: [InputFlags.HasDecoratorInputTransform, "stepMinute", "stepMinute", numberAttribute],
       stepSecond: [InputFlags.HasDecoratorInputTransform, "stepSecond", "stepSecond", numberAttribute],
@@ -4923,7 +4847,6 @@ var Calendar = class _Calendar {
                                                         [ngClass]="{ 'p-highlight': isSelected(date) && date.selectable, 'p-disabled': !date.selectable }"
                                                         (click)="onDateSelect($event, date)"
                                                         draggable="false"
-                                                        [attr.data-date]="formatDateKey(formatDateMetaToDate(date))"
                                                         (keydown)="onDateCellKeydown($event, date, i)"
                                                         pRipple
                                                     >
@@ -5270,12 +5193,6 @@ var Calendar = class _Calendar {
       type: Input,
       args: [{
         transform: booleanAttribute
-      }]
-    }],
-    stepYearPicker: [{
-      type: Input,
-      args: [{
-        transform: numberAttribute
       }]
     }],
     stepHour: [{
@@ -6259,8 +6176,8 @@ function SelectButton_div_2_Template(rf, ctx) {
     const customcontent_r8 = ɵɵreference(3);
     const ctx_r4 = ɵɵnextContext();
     ɵɵclassMap(option_r3.styleClass);
-    ɵɵproperty("role", ctx_r4.multiple ? "checkbox" : "radio")("ngClass", ɵɵpureFunction3(14, _c16, ctx_r4.isSelected(option_r3), ctx_r4.disabled || ctx_r4.isOptionDisabled(option_r3), option_r3.icon && !ctx_r4.getOptionLabel(option_r3)))("autofocus", ctx_r4.autofocus);
-    ɵɵattribute("tabindex", i_r4 === ctx_r4.focusedIndex ? "0" : "-1")("aria-label", option_r3.label)("aria-checked", ctx_r4.isSelected(option_r3))("aria-disabled", ctx_r4.optionDisabled)("title", option_r3.title)("aria-labelledby", ctx_r4.getOptionLabel(option_r3))("data-pc-section", "button");
+    ɵɵproperty("role", ctx_r4.multiple ? "checkbox" : "radio")("ngClass", ɵɵpureFunction3(15, _c16, ctx_r4.isSelected(option_r3), ctx_r4.disabled || ctx_r4.isOptionDisabled(option_r3), option_r3.icon && !ctx_r4.getOptionLabel(option_r3)))("autofocus", ctx_r4.autofocus);
+    ɵɵattribute("tabindex", i_r4 === ctx_r4.focusedIndex ? "0" : "-1")("aria-label", option_r3.label)("aria-checked", ctx_r4.isSelected(option_r3))("aria-disabled", ctx_r4.optionDisabled)("aria-pressed", ctx_r4.isSelected(option_r3))("title", option_r3.title)("aria-labelledby", ctx_r4.getOptionLabel(option_r3))("data-pc-section", "button");
     ɵɵadvance();
     ɵɵproperty("ngIf", !ctx_r4.itemTemplate)("ngIfElse", customcontent_r8);
   }
@@ -6552,7 +6469,7 @@ var SelectButton = class _SelectButton {
     template: function SelectButton_Template(rf, ctx) {
       if (rf & 1) {
         ɵɵelementStart(0, "div", 2, 0);
-        ɵɵtemplate(2, SelectButton_div_2_Template, 4, 18, "div", 3);
+        ɵɵtemplate(2, SelectButton_div_2_Template, 4, 19, "div", 3);
         ɵɵelementEnd();
       }
       if (rf & 2) {
@@ -6587,6 +6504,7 @@ var SelectButton = class _SelectButton {
                 class="p-button p-component"
                 [class]="option.styleClass"
                 [ngClass]="{ 'p-highlight': isSelected(option), 'p-disabled': disabled || isOptionDisabled(option), 'p-button-icon-only': option.icon && !getOptionLabel(option) }"
+                [attr.aria-pressed]="isSelected(option)"
                 (click)="onOptionSelect($event, option, i)"
                 (keydown)="onKeyDown($event, option, i)"
                 [attr.title]="option.title"
@@ -11355,7 +11273,6 @@ var Table = class _Table {
     this.styleElement = this.renderer.createElement("style");
     this.styleElement.type = "text/css";
     this.renderer.appendChild(this.document.head, this.styleElement);
-    DomHandler.setAttribute(this.styleElement, "nonce", this.config?.csp()?.nonce);
   }
   getGroupRowsMeta() {
     return {
@@ -13768,15 +13685,11 @@ var ReorderableColumn = class _ReorderableColumn {
     type: _ReorderableColumn,
     selectors: [["", "pReorderableColumn", ""]],
     hostAttrs: [1, "p-element"],
-    hostVars: 2,
     hostBindings: function ReorderableColumn_HostBindings(rf, ctx) {
       if (rf & 1) {
         ɵɵlistener("drop", function ReorderableColumn_drop_HostBindingHandler($event) {
           return ctx.onDrop($event);
         });
-      }
-      if (rf & 2) {
-        ɵɵstyleProp("cursor", ctx.isEnabled() ? "move" : "default");
       }
     },
     inputs: {
@@ -13791,8 +13704,7 @@ var ReorderableColumn = class _ReorderableColumn {
     args: [{
       selector: "[pReorderableColumn]",
       host: {
-        class: "p-element",
-        "[style.cursor]": 'isEnabled() ? "move" : "default"'
+        class: "p-element"
       }
     }]
   }], () => [{
@@ -14692,7 +14604,7 @@ var TableCheckbox = class _TableCheckbox {
     this.tableService = tableService;
     this.cd = cd;
     this.subscription = this.dt.tableService.selectionSource$.subscribe(() => {
-      this.checked = this.dt.isSelected(this.value) && !this.disabled;
+      this.checked = this.dt.isSelected(this.value);
       this.ariaLabel = this.ariaLabel || this.dt.config.translation.aria ? this.checked ? this.dt.config.translation.aria.selectRow : this.dt.config.translation.aria.unselectRow : void 0;
       this.cd.markForCheck();
     });
@@ -15347,18 +15259,6 @@ var ColumnFilter = class _ColumnFilter {
    * @group Props
    */
   ariaLabel;
-  /**
-   * Callback to invoke on overlay is shown.
-   * @param {AnimationEvent} originalEvent - animation event.
-   * @group Emits
-   */
-  onShow = new EventEmitter();
-  /**
-   * Callback to invoke on overlay is hidden.
-   * @param {AnimationEvent} originalEvent - animation event.
-   * @group Emits
-   */
-  onHide = new EventEmitter();
   icon;
   clearButtonViewChild;
   templates;
@@ -15515,11 +15415,8 @@ var ColumnFilter = class _ColumnFilter {
     }
   }
   onRowMatchModeChange(matchMode) {
-    const fieldFilter = this.dt.filters[this.field];
-    fieldFilter.matchMode = matchMode;
-    if (fieldFilter.value) {
-      this.dt._filter();
-    }
+    this.dt.filters[this.field].matchMode = matchMode;
+    this.dt._filter();
     this.hide();
   }
   onRowMatchModeKeyDown(event2) {
@@ -15604,6 +15501,7 @@ var ColumnFilter = class _ColumnFilter {
     }
   }
   onEscape() {
+    this.overlayVisible = false;
     this.icon?.nativeElement.focus();
   }
   findNextItem(item) {
@@ -15639,9 +15537,6 @@ var ColumnFilter = class _ColumnFilter {
           }
         };
         this.overlaySubscription = this.overlayService.clickObservable.subscribe(this.overlayEventListener);
-        this.onShow.emit({
-          originalEvent: event2
-        });
         break;
       case "void":
         this.onOverlayHide();
@@ -15658,9 +15553,6 @@ var ColumnFilter = class _ColumnFilter {
         break;
       case "void":
         zindexutils.clear(event2.element);
-        this.onHide.emit({
-          originalEvent: event2
-        });
         break;
     }
   }
@@ -15837,15 +15729,11 @@ var ColumnFilter = class _ColumnFilter {
       suffix: "suffix",
       locale: "locale",
       localeMatcher: "localeMatcher",
-      currency: "currency",
+      currency: [InputFlags.HasDecoratorInputTransform, "currency", "currency", booleanAttribute],
       currencyDisplay: "currencyDisplay",
       useGrouping: [InputFlags.HasDecoratorInputTransform, "useGrouping", "useGrouping", booleanAttribute],
       showButtons: [InputFlags.HasDecoratorInputTransform, "showButtons", "showButtons", booleanAttribute],
       ariaLabel: "ariaLabel"
-    },
-    outputs: {
-      onShow: "onShow",
-      onHide: "onHide"
     },
     features: [ɵɵInputTransformsFeature],
     decls: 5,
@@ -16143,7 +16031,10 @@ var ColumnFilter = class _ColumnFilter {
       type: Input
     }],
     currency: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     currencyDisplay: [{
       type: Input
@@ -16162,12 +16053,6 @@ var ColumnFilter = class _ColumnFilter {
     }],
     ariaLabel: [{
       type: Input
-    }],
-    onShow: [{
-      type: Output
-    }],
-    onHide: [{
-      type: Output
     }],
     icon: [{
       type: ViewChild,

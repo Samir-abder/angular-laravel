@@ -1,25 +1,26 @@
 import {
-  BaseIcon
-} from "./chunk-VHYVE2LJ.js";
+  Ripple,
+  RippleModule
+} from "./chunk-GYMXIBTA.js";
 import {
-  Ripple
-} from "./chunk-ZQSUHRAR.js";
+  BaseIcon
+} from "./chunk-CSOYK6LG.js";
 import {
   DomHandler
-} from "./chunk-TKJMWDM5.js";
+} from "./chunk-LZMSIMQG.js";
 import {
   ObjectUtils,
   PrimeTemplate,
   SharedModule,
   UniqueComponentId
-} from "./chunk-I7XBFZ65.js";
+} from "./chunk-RIYG23RS.js";
 import {
+  CommonModule,
   DOCUMENT,
   NgClass,
   NgIf,
   NgStyle,
-  NgTemplateOutlet,
-  isPlatformBrowser
+  NgTemplateOutlet
 } from "./chunk-XAS4SJBG.js";
 import {
   ChangeDetectionStrategy,
@@ -33,10 +34,8 @@ import {
   InputFlags,
   NgModule,
   Output,
-  PLATFORM_ID,
   ViewEncapsulation$1,
   booleanAttribute,
-  inject,
   numberAttribute,
   setClassMetadata,
   ɵɵInheritDefinitionFeature,
@@ -45,6 +44,7 @@ import {
   ɵɵadvance,
   ɵɵattribute,
   ɵɵclassMap,
+  ɵɵclassProp,
   ɵɵcontentQuery,
   ɵɵdefineComponent,
   ɵɵdefineDirective,
@@ -65,106 +65,11 @@ import {
   ɵɵprojection,
   ɵɵprojectionDef,
   ɵɵproperty,
-  ɵɵpureFunction1,
   ɵɵqueryRefresh,
   ɵɵtemplate,
   ɵɵtext,
   ɵɵtextInterpolate
 } from "./chunk-X6RUONED.js";
-
-// node_modules/primeng/fesm2022/primeng-autofocus.mjs
-var AutoFocus = class _AutoFocus {
-  /**
-   * When present, it specifies that the component should automatically get focus on load.
-   * @group Props
-   */
-  autofocus = false;
-  focused = false;
-  platformId = inject(PLATFORM_ID);
-  document = inject(DOCUMENT);
-  host = inject(ElementRef);
-  ngAfterContentChecked() {
-    if (this.autofocus === false) {
-      this.host.nativeElement.removeAttribute("autofocus");
-    } else {
-      this.host.nativeElement.setAttribute("autofocus", true);
-    }
-    if (!this.focused) {
-      this.autoFocus();
-    }
-  }
-  ngAfterViewChecked() {
-    if (!this.focused) {
-      this.autoFocus();
-    }
-  }
-  autoFocus() {
-    if (isPlatformBrowser(this.platformId) && this.autofocus) {
-      setTimeout(() => {
-        const focusableElements = DomHandler.getFocusableElements(this.host?.nativeElement);
-        if (focusableElements.length === 0) {
-          this.host.nativeElement.focus();
-        }
-        if (focusableElements.length > 0) {
-          focusableElements[0].focus();
-        }
-        this.focused = true;
-      });
-    }
-  }
-  static ɵfac = function AutoFocus_Factory(t) {
-    return new (t || _AutoFocus)();
-  };
-  static ɵdir = ɵɵdefineDirective({
-    type: _AutoFocus,
-    selectors: [["", "pAutoFocus", ""]],
-    hostAttrs: [1, "p-element"],
-    inputs: {
-      autofocus: [InputFlags.HasDecoratorInputTransform, "autofocus", "autofocus", booleanAttribute]
-    },
-    standalone: true,
-    features: [ɵɵInputTransformsFeature]
-  });
-};
-(() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(AutoFocus, [{
-    type: Directive,
-    args: [{
-      selector: "[pAutoFocus]",
-      standalone: true,
-      host: {
-        class: "p-element"
-      }
-    }]
-  }], null, {
-    autofocus: [{
-      type: Input,
-      args: [{
-        transform: booleanAttribute
-      }]
-    }]
-  });
-})();
-var AutoFocusModule = class _AutoFocusModule {
-  static ɵfac = function AutoFocusModule_Factory(t) {
-    return new (t || _AutoFocusModule)();
-  };
-  static ɵmod = ɵɵdefineNgModule({
-    type: _AutoFocusModule,
-    imports: [AutoFocus],
-    exports: [AutoFocus]
-  });
-  static ɵinj = ɵɵdefineInjector({});
-};
-(() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(AutoFocusModule, [{
-    type: NgModule,
-    args: [{
-      imports: [AutoFocus],
-      exports: [AutoFocus]
-    }]
-  }], null, null);
-})();
 
 // node_modules/primeng/fesm2022/primeng-icons-spinner.mjs
 var SpinnerIcon = class _SpinnerIcon extends BaseIcon {
@@ -234,11 +139,99 @@ var SpinnerIcon = class _SpinnerIcon extends BaseIcon {
   }], null, null);
 })();
 
+// node_modules/primeng/fesm2022/primeng-autofocus.mjs
+var AutoFocus = class _AutoFocus {
+  host;
+  constructor(host) {
+    this.host = host;
+  }
+  /**
+   * When present, it specifies that the component should automatically get focus on load.
+   * @group Props
+   */
+  autofocus = false;
+  focused = false;
+  ngAfterContentChecked() {
+    if (this.autofocus === false) {
+      this.host.nativeElement.removeAttribute("autofocus");
+    } else {
+      this.host.nativeElement.setAttribute("autofocus", true);
+    }
+    if (!this.focused) {
+      if (this.autofocus) {
+        setTimeout(() => {
+          const focusableElements = DomHandler.getFocusableElements(this.host.nativeElement);
+          if (focusableElements.length === 0) {
+            this.host.nativeElement.focus();
+          }
+          if (focusableElements.length > 0) {
+            focusableElements[0].focus();
+          }
+          this.focused = true;
+        });
+      }
+    }
+  }
+  static ɵfac = function AutoFocus_Factory(t) {
+    return new (t || _AutoFocus)(ɵɵdirectiveInject(ElementRef));
+  };
+  static ɵdir = ɵɵdefineDirective({
+    type: _AutoFocus,
+    selectors: [["", "pAutoFocus", ""]],
+    hostAttrs: [1, "p-element"],
+    inputs: {
+      autofocus: [InputFlags.HasDecoratorInputTransform, "autofocus", "autofocus", booleanAttribute]
+    },
+    features: [ɵɵInputTransformsFeature]
+  });
+};
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(AutoFocus, [{
+    type: Directive,
+    args: [{
+      selector: "[pAutoFocus]",
+      host: {
+        class: "p-element"
+      }
+    }]
+  }], () => [{
+    type: ElementRef
+  }], {
+    autofocus: [{
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
+    }]
+  });
+})();
+var AutoFocusModule = class _AutoFocusModule {
+  static ɵfac = function AutoFocusModule_Factory(t) {
+    return new (t || _AutoFocusModule)();
+  };
+  static ɵmod = ɵɵdefineNgModule({
+    type: _AutoFocusModule,
+    declarations: [AutoFocus],
+    imports: [CommonModule],
+    exports: [AutoFocus]
+  });
+  static ɵinj = ɵɵdefineInjector({
+    imports: [CommonModule]
+  });
+};
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(AutoFocusModule, [{
+    type: NgModule,
+    args: [{
+      imports: [CommonModule],
+      exports: [AutoFocus],
+      declarations: [AutoFocus]
+    }]
+  }], null, null);
+})();
+
 // node_modules/primeng/fesm2022/primeng-button.mjs
 var _c0 = ["*"];
-var _c1 = (a0) => ({
-  class: a0
-});
 function Button_ng_container_2_Template(rf, ctx) {
   if (rf & 1) {
     ɵɵelementContainer(0);
@@ -250,6 +243,7 @@ function Button_ng_container_3_ng_container_1_span_1_Template(rf, ctx) {
   }
   if (rf & 2) {
     const ctx_r0 = ɵɵnextContext(3);
+    ɵɵclassMap("p-button-loading-icon pi-spin " + ctx_r0.loadingIcon);
     ɵɵproperty("ngClass", ctx_r0.iconClass());
     ɵɵattribute("aria-hidden", true)("data-pc-section", "loadingicon");
   }
@@ -267,7 +261,7 @@ function Button_ng_container_3_ng_container_1_SpinnerIcon_2_Template(rf, ctx) {
 function Button_ng_container_3_ng_container_1_Template(rf, ctx) {
   if (rf & 1) {
     ɵɵelementContainerStart(0);
-    ɵɵtemplate(1, Button_ng_container_3_ng_container_1_span_1_Template, 1, 3, "span", 6)(2, Button_ng_container_3_ng_container_1_SpinnerIcon_2_Template, 1, 4, "SpinnerIcon", 7);
+    ɵɵtemplate(1, Button_ng_container_3_ng_container_1_span_1_Template, 1, 5, "span", 6)(2, Button_ng_container_3_ng_container_1_SpinnerIcon_2_Template, 1, 4, "SpinnerIcon", 7);
     ɵɵelementContainerEnd();
   }
   if (rf & 2) {
@@ -278,21 +272,31 @@ function Button_ng_container_3_ng_container_1_Template(rf, ctx) {
     ɵɵproperty("ngIf", !ctx_r0.loadingIcon);
   }
 }
-function Button_ng_container_3_2_ng_template_0_Template(rf, ctx) {
+function Button_ng_container_3_span_2_1_ng_template_0_Template(rf, ctx) {
 }
-function Button_ng_container_3_2_Template(rf, ctx) {
+function Button_ng_container_3_span_2_1_Template(rf, ctx) {
   if (rf & 1) {
-    ɵɵtemplate(0, Button_ng_container_3_2_ng_template_0_Template, 0, 0, "ng-template", 10);
+    ɵɵtemplate(0, Button_ng_container_3_span_2_1_ng_template_0_Template, 0, 0, "ng-template");
+  }
+}
+function Button_ng_container_3_span_2_Template(rf, ctx) {
+  if (rf & 1) {
+    ɵɵelementStart(0, "span", 10);
+    ɵɵtemplate(1, Button_ng_container_3_span_2_1_Template, 1, 0, null, 1);
+    ɵɵelementEnd();
   }
   if (rf & 2) {
     const ctx_r0 = ɵɵnextContext(2);
-    ɵɵproperty("ngIf", ctx_r0.loadingIconTemplate);
+    ɵɵproperty("ngClass", ctx_r0.iconClass());
+    ɵɵattribute("aria-hidden", true)("data-pc-section", "loadingicon");
+    ɵɵadvance();
+    ɵɵproperty("ngTemplateOutlet", ctx_r0.loadingIconTemplate);
   }
 }
 function Button_ng_container_3_Template(rf, ctx) {
   if (rf & 1) {
     ɵɵelementContainerStart(0);
-    ɵɵtemplate(1, Button_ng_container_3_ng_container_1_Template, 3, 2, "ng-container", 2)(2, Button_ng_container_3_2_Template, 1, 1, null, 5);
+    ɵɵtemplate(1, Button_ng_container_3_ng_container_1_Template, 3, 2, "ng-container", 2)(2, Button_ng_container_3_span_2_Template, 2, 4, "span", 5);
     ɵɵelementContainerEnd();
   }
   if (rf & 2) {
@@ -300,7 +304,7 @@ function Button_ng_container_3_Template(rf, ctx) {
     ɵɵadvance();
     ɵɵproperty("ngIf", !ctx_r0.loadingIconTemplate);
     ɵɵadvance();
-    ɵɵproperty("ngTemplateOutlet", ctx_r0.loadingIconTemplate)("ngTemplateOutletContext", ɵɵpureFunction1(3, _c1, ctx_r0.iconClass()));
+    ɵɵproperty("ngIf", ctx_r0.loadingIconTemplate);
   }
 }
 function Button_ng_container_4_span_1_Template(rf, ctx) {
@@ -309,25 +313,40 @@ function Button_ng_container_4_span_1_Template(rf, ctx) {
   }
   if (rf & 2) {
     const ctx_r0 = ɵɵnextContext(2);
+    ɵɵclassMap(ctx_r0.icon);
     ɵɵproperty("ngClass", ctx_r0.iconClass());
     ɵɵattribute("data-pc-section", "icon");
   }
 }
-function Button_ng_container_4_2_ng_template_0_Template(rf, ctx) {
+function Button_ng_container_4_span_2_1_ng_template_0_Template(rf, ctx) {
 }
-function Button_ng_container_4_2_Template(rf, ctx) {
+function Button_ng_container_4_span_2_1_Template(rf, ctx) {
   if (rf & 1) {
-    ɵɵtemplate(0, Button_ng_container_4_2_ng_template_0_Template, 0, 0, "ng-template", 10);
+    ɵɵtemplate(0, Button_ng_container_4_span_2_1_ng_template_0_Template, 0, 0, "ng-template", 12);
+  }
+  if (rf & 2) {
+    const ctx_r0 = ɵɵnextContext(3);
+    ɵɵproperty("ngIf", !ctx_r0.icon);
+  }
+}
+function Button_ng_container_4_span_2_Template(rf, ctx) {
+  if (rf & 1) {
+    ɵɵelementStart(0, "span", 8);
+    ɵɵtemplate(1, Button_ng_container_4_span_2_1_Template, 1, 1, null, 1);
+    ɵɵelementEnd();
   }
   if (rf & 2) {
     const ctx_r0 = ɵɵnextContext(2);
-    ɵɵproperty("ngIf", !ctx_r0.icon && ctx_r0.iconTemplate);
+    ɵɵproperty("ngClass", ctx_r0.iconClass());
+    ɵɵattribute("data-pc-section", "icon");
+    ɵɵadvance();
+    ɵɵproperty("ngTemplateOutlet", ctx_r0.iconTemplate);
   }
 }
 function Button_ng_container_4_Template(rf, ctx) {
   if (rf & 1) {
     ɵɵelementContainerStart(0);
-    ɵɵtemplate(1, Button_ng_container_4_span_1_Template, 1, 2, "span", 6)(2, Button_ng_container_4_2_Template, 1, 1, null, 5);
+    ɵɵtemplate(1, Button_ng_container_4_span_1_Template, 1, 4, "span", 6)(2, Button_ng_container_4_span_2_Template, 2, 3, "span", 11);
     ɵɵelementContainerEnd();
   }
   if (rf & 2) {
@@ -335,12 +354,12 @@ function Button_ng_container_4_Template(rf, ctx) {
     ɵɵadvance();
     ɵɵproperty("ngIf", ctx_r0.icon && !ctx_r0.iconTemplate);
     ɵɵadvance();
-    ɵɵproperty("ngTemplateOutlet", ctx_r0.iconTemplate)("ngTemplateOutletContext", ɵɵpureFunction1(3, _c1, ctx_r0.iconClass()));
+    ɵɵproperty("ngIf", !ctx_r0.icon && ctx_r0.iconTemplate);
   }
 }
 function Button_span_5_Template(rf, ctx) {
   if (rf & 1) {
-    ɵɵelementStart(0, "span", 11);
+    ɵɵelementStart(0, "span", 13);
     ɵɵtext(1);
     ɵɵelementEnd();
   }
@@ -587,17 +606,10 @@ var ButtonDirective = class _ButtonDirective {
   updateIcon() {
     let iconElement = DomHandler.findSingle(this.htmlElement, ".p-button-icon");
     let labelElement = DomHandler.findSingle(this.htmlElement, ".p-button-label");
-    if (this.loading) {
-      if (!this.loadingIcon && iconElement) {
-        iconElement.innerHTML = this.spinnerIcon;
-      } else if (this.loadingIcon && iconElement) {
-        iconElement.className = `p-button-icon ${this.loadingIcon}`;
-      }
-    } else if (this.icon && iconElement) {
-      iconElement.className = `p-button-icon ${this.icon}`;
-    } else if (iconElement) {
+    if (this.loading && !this.loadingIcon && iconElement) {
+      iconElement.innerHTML = this.spinnerIcon;
+    } else if (iconElement?.innerHTML) {
       iconElement.innerHTML = "";
-      this.createIcon();
     }
     if (iconElement) {
       if (this.iconPos) {
@@ -636,7 +648,6 @@ var ButtonDirective = class _ButtonDirective {
       size: "size",
       plain: [InputFlags.HasDecoratorInputTransform, "plain", "plain", booleanAttribute]
     },
-    standalone: true,
     features: [ɵɵInputTransformsFeature]
   });
 };
@@ -645,7 +656,6 @@ var ButtonDirective = class _ButtonDirective {
     type: Directive,
     args: [{
       selector: "[pButton]",
-      standalone: true,
       host: {
         class: "p-element"
       }
@@ -856,19 +866,13 @@ var Button = class _Button {
     return Object.entries(this.iconClass()).filter(([, value]) => !!value).reduce((acc, [key]) => acc + ` ${key}`, "p-button-loading-icon");
   }
   iconClass() {
-    const iconClasses = {
+    return {
       "p-button-icon": true,
       "p-button-icon-left": this.iconPos === "left" && this.label,
       "p-button-icon-right": this.iconPos === "right" && this.label,
       "p-button-icon-top": this.iconPos === "top" && this.label,
       "p-button-icon-bottom": this.iconPos === "bottom" && this.label
     };
-    if (this.loading) {
-      iconClasses[`p-button-loading-icon pi-spin ${this.loadingIcon ?? ""}`] = true;
-    } else if (this.icon) {
-      iconClasses[this.icon] = true;
-    }
-    return iconClasses;
   }
   get buttonClass() {
     return {
@@ -930,6 +934,12 @@ var Button = class _Button {
       }
     },
     hostAttrs: [1, "p-element"],
+    hostVars: 2,
+    hostBindings: function Button_HostBindings(rf, ctx) {
+      if (rf & 2) {
+        ɵɵclassProp("p-disabled", ctx.disabled);
+      }
+    },
     inputs: {
       type: "type",
       iconPos: "iconPos",
@@ -959,12 +969,11 @@ var Button = class _Button {
       onFocus: "onFocus",
       onBlur: "onBlur"
     },
-    standalone: true,
-    features: [ɵɵInputTransformsFeature, ɵɵStandaloneFeature],
+    features: [ɵɵInputTransformsFeature],
     ngContentSelectors: _c0,
     decls: 7,
     vars: 14,
-    consts: [["pRipple", "", "pAutoFocus", "", 3, "click", "focus", "blur", "ngStyle", "disabled", "ngClass", "autofocus"], [4, "ngTemplateOutlet"], [4, "ngIf"], ["class", "p-button-label", 4, "ngIf"], [3, "ngClass", "class", 4, "ngIf"], [4, "ngTemplateOutlet", "ngTemplateOutletContext"], [3, "ngClass", 4, "ngIf"], [3, "styleClass", "spin", 4, "ngIf"], [3, "ngClass"], [3, "styleClass", "spin"], [3, "ngIf"], [1, "p-button-label"]],
+    consts: [["pRipple", "", "pAutoFocus", "", 3, "click", "focus", "blur", "ngStyle", "disabled", "ngClass", "autofocus"], [4, "ngTemplateOutlet"], [4, "ngIf"], ["class", "p-button-label", 4, "ngIf"], [3, "ngClass", "class", 4, "ngIf"], ["class", "p-button-loading-icon", 3, "ngClass", 4, "ngIf"], [3, "class", "ngClass", 4, "ngIf"], [3, "styleClass", "spin", 4, "ngIf"], [3, "ngClass"], [3, "styleClass", "spin"], [1, "p-button-loading-icon", 3, "ngClass"], [3, "ngClass", 4, "ngIf"], [3, "ngIf"], [1, "p-button-label"]],
     template: function Button_Template(rf, ctx) {
       if (rf & 1) {
         ɵɵprojectionDef();
@@ -977,7 +986,7 @@ var Button = class _Button {
           return ctx.onBlur.emit($event);
         });
         ɵɵprojection(1);
-        ɵɵtemplate(2, Button_ng_container_2_Template, 1, 0, "ng-container", 1)(3, Button_ng_container_3_Template, 3, 5, "ng-container", 2)(4, Button_ng_container_4_Template, 3, 5, "ng-container", 2)(5, Button_span_5_Template, 2, 3, "span", 3)(6, Button_span_6_Template, 2, 5, "span", 4);
+        ɵɵtemplate(2, Button_ng_container_2_Template, 1, 0, "ng-container", 1)(3, Button_ng_container_3_Template, 3, 2, "ng-container", 2)(4, Button_ng_container_4_Template, 3, 2, "ng-container", 2)(5, Button_span_5_Template, 2, 3, "span", 3)(6, Button_span_6_Template, 2, 5, "span", 4);
         ɵɵelementEnd();
       }
       if (rf & 2) {
@@ -995,7 +1004,7 @@ var Button = class _Button {
         ɵɵproperty("ngIf", !ctx.contentTemplate && ctx.badge);
       }
     },
-    dependencies: [NgIf, NgTemplateOutlet, NgStyle, NgClass, Ripple, AutoFocus, SpinnerIcon],
+    dependencies: () => [NgClass, NgIf, NgTemplateOutlet, NgStyle, Ripple, AutoFocus, SpinnerIcon],
     encapsulation: 2,
     changeDetection: 0
   });
@@ -1005,8 +1014,6 @@ var Button = class _Button {
     type: Component,
     args: [{
       selector: "p-button",
-      standalone: true,
-      imports: [NgIf, NgTemplateOutlet, NgStyle, NgClass, Ripple, AutoFocus, SpinnerIcon],
       template: `
         <button
             [attr.type]="type"
@@ -1028,14 +1035,18 @@ var Button = class _Button {
             <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
             <ng-container *ngIf="loading">
                 <ng-container *ngIf="!loadingIconTemplate">
-                    <span *ngIf="loadingIcon" [ngClass]="iconClass()" [attr.aria-hidden]="true" [attr.data-pc-section]="'loadingicon'"></span>
+                    <span *ngIf="loadingIcon" [class]="'p-button-loading-icon pi-spin ' + loadingIcon" [ngClass]="iconClass()" [attr.aria-hidden]="true" [attr.data-pc-section]="'loadingicon'"></span>
                     <SpinnerIcon *ngIf="!loadingIcon" [styleClass]="spinnerIconClass()" [spin]="true" [attr.aria-hidden]="true" [attr.data-pc-section]="'loadingicon'" />
                 </ng-container>
-                <ng-template [ngIf]="loadingIconTemplate" *ngTemplateOutlet="loadingIconTemplate; context: { class: iconClass() }"></ng-template>
+                <span *ngIf="loadingIconTemplate" class="p-button-loading-icon" [ngClass]="iconClass()" [attr.aria-hidden]="true" [attr.data-pc-section]="'loadingicon'">
+                    <ng-template *ngTemplateOutlet="loadingIconTemplate"></ng-template>
+                </span>
             </ng-container>
             <ng-container *ngIf="!loading">
-                <span *ngIf="icon && !iconTemplate" [ngClass]="iconClass()" [attr.data-pc-section]="'icon'"></span>
-                <ng-template [ngIf]="!icon && iconTemplate" *ngTemplateOutlet="iconTemplate; context: { class: iconClass() }"></ng-template>
+                <span *ngIf="icon && !iconTemplate" [class]="icon" [ngClass]="iconClass()" [attr.data-pc-section]="'icon'"></span>
+                <span *ngIf="!icon && iconTemplate" [ngClass]="iconClass()" [attr.data-pc-section]="'icon'">
+                    <ng-template [ngIf]="!icon" *ngTemplateOutlet="iconTemplate"></ng-template>
+                </span>
             </ng-container>
             <span class="p-button-label" [attr.aria-hidden]="icon && !label" *ngIf="!contentTemplate && label" [attr.data-pc-section]="'label'">{{ label }}</span>
             <span [ngClass]="badgeStyleClass()" [class]="badgeClass" *ngIf="!contentTemplate && badge" [attr.data-pc-section]="'badge'">{{ badge }}</span>
@@ -1044,7 +1055,8 @@ var Button = class _Button {
       changeDetection: ChangeDetectionStrategy.OnPush,
       encapsulation: ViewEncapsulation$1.None,
       host: {
-        class: "p-element"
+        class: "p-element",
+        "[class.p-disabled]": "disabled"
       }
     }]
   }], () => [{
@@ -1167,29 +1179,31 @@ var ButtonModule = class _ButtonModule {
   };
   static ɵmod = ɵɵdefineNgModule({
     type: _ButtonModule,
-    imports: [ButtonDirective, Button],
+    declarations: [ButtonDirective, Button],
+    imports: [CommonModule, RippleModule, SharedModule, AutoFocusModule, SpinnerIcon],
     exports: [ButtonDirective, Button, SharedModule]
   });
   static ɵinj = ɵɵdefineInjector({
-    imports: [Button, SharedModule]
+    imports: [CommonModule, RippleModule, SharedModule, AutoFocusModule, SpinnerIcon, SharedModule]
   });
 };
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(ButtonModule, [{
     type: NgModule,
     args: [{
-      imports: [ButtonDirective, Button],
-      exports: [ButtonDirective, Button, SharedModule]
+      imports: [CommonModule, RippleModule, SharedModule, AutoFocusModule, SpinnerIcon],
+      exports: [ButtonDirective, Button, SharedModule],
+      declarations: [ButtonDirective, Button]
     }]
   }], null, null);
 })();
 
 export {
+  SpinnerIcon,
   AutoFocus,
   AutoFocusModule,
-  SpinnerIcon,
   ButtonDirective,
   Button,
   ButtonModule
 };
-//# sourceMappingURL=chunk-BX375DIK.js.map
+//# sourceMappingURL=chunk-UQDLSMQ7.js.map
