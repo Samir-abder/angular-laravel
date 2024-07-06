@@ -1,6 +1,6 @@
 import {
   ObjectUtils
-} from "./chunk-RIYG23RS.js";
+} from "./chunk-I7XBFZ65.js";
 import {
   ChangeDetectionStrategy,
   Component,
@@ -95,4 +95,4 @@ var BaseIcon = class _BaseIcon {
 export {
   BaseIcon
 };
-//# sourceMappingURL=chunk-CSOYK6LG.js.map
+//# sourceMappingURL=chunk-VHYVE2LJ.js.map

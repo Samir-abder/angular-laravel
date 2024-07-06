@@ -27,6 +27,12 @@ Route::group(['middleware' => 'api',], function ($router) {
     Route::get('getVideo/{email}',[VideoController::class,'getVideoByEmail']);
     Route::get('getVideoByLink/{link}',[VideoController::class,'getVideoByLink']);
     Route::get('getVideoSearch/{search}',[VideoController::class,'filterVideos']);
+    Route::post('/share-video', [VideoController::class, 'shareVideo']);
+    Route::post('/comentario', [VideoController::class, 'saveComment']);
+    Route::get('getAllCommentsByLink/{link}', [VideoController::class, 'getAllCommentsByLink']);
+
+
+    // Asegúrate de ajustar el namespace y el middleware según sea necesario
     Route::get('/imagenes/{fileName}', function ($fileName) {
         // Obtener la ruta completa del archivo
         $filePath = storage_path('app/imagenes/' . $fileName);

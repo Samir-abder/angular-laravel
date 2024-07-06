@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Video;
+use App\Models\Comentarios;
 use Illuminate\Support\Facades\Log; // Para el logging de errores
+use App\Mail\ShareVideoEmail;
+use Illuminate\Support\Facades\Mail;
 
 class VideoController extends Controller
 {
@@ -198,5 +201,106 @@ class VideoController extends Controller
             ], 500);
         }
     }
+    public function shareVideo(Request $request){
 
+        try {
+
+            // Validar los datos de entrada
+            $validatedData = $request->validate([
+                'videoUrl' => 'required',
+                'email' => 'required|email',
+            ]);
+            // Extraer el enlace del video y el correo electrónico del destinatario de la solicitud
+            $videoUrl = $validatedData['videoUrl'];
+            $email = $validatedData['email'];
+    
+           // Depurar las variables
+        //dd('Email:', $email, 'Video URL:', $videoUrl);
+            
+            // Enviar el correo
+            Mail::to($email)->send(new ShareVideoEmail($videoUrl));
+    
+            // Respuesta de éxito
+            return response()->json(['message' => 'Video compartido con éxito.'], 200);
+        } catch (\Exception $e) {
+            // Loguear el error
+            \Log::error('Error compartiendo video: '.$e->getMessage());
+    
+            // Respuesta de error
+            return response()->json(['message' => 'Error al compartir el video.'], 500);
+        }
+    }
+
+    public function saveComment(Request $request)
+    {
+        try {
+            // Validar la solicitud
+            $request->validate([
+                'username' => 'required',
+                'comment' => 'required',
+                'link' => 'required',
+            ]);
+
+            // Obtener el video por el link
+            $video = Video::where('link', $request->get("link"))->first();
+
+            // Verificar si se encontró el video
+            if ($video) {
+                // Guardar el comentario en la base de datos
+                Comentarios::create([
+                    'video_id' => $request->get("link"),
+                    'username' => $request->get('username'),
+                    'text' => $request->get('comment'),
+                    'date' => now()->format('Y-m-d'),
+                ]);
+
+                // Retornar una respuesta JSON de éxito
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'Comentario guardado exitosamente.',
+                ]);
+            } else {
+                // Retornar una respuesta JSON de error si no se encontró el video
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'No se encontró ningún video asociado a ese link.',
+                ], 404);
+            }
+
+        } catch (\Exception $e) {
+            // Loguear el error para revisión
+            Log::error('Error al guardar el comentario: ' . $e->getMessage());
+
+            // Retornar una respuesta JSON de error
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Hubo un error al guardar el comentario. Por favor, intenta nuevamente.',
+                'details' => $e->getMessage()
+            ], 500);
+        }
+    }
+    public function getAllCommentsByLink(Request $request, $link)
+    {
+        try {
+            // Obtener todos los comentarios por el link del video
+            $comments = Comentarios::where('video_id', $link)->get();
+
+            // Retornar una respuesta JSON con los detalles de todos los comentarios
+            return response()->json([
+                'status' => 'success',
+                'comments' => $comments,
+            ]);
+
+        } catch (\Exception $e) {
+            // Loguear el error para revisión
+            Log::error('Error al obtener todos los comentarios por link: ' . $e->getMessage());
+
+            // Retornar una respuesta JSON de error
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Hubo un error al obtener todos los comentarios por link. Por favor, intenta nuevamente.',
+                'details' => $e->getMessage()
+            ], 500);
+        }
+    }
 }

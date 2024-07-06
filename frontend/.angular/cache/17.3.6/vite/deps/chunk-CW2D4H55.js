@@ -3,7 +3,7 @@ import {
 } from "./chunk-73SYDGCU.js";
 import {
   PrimeNGConfig
-} from "./chunk-RIYG23RS.js";
+} from "./chunk-I7XBFZ65.js";
 import {
   CommonModule
 } from "./chunk-XAS4SJBG.js";
@@ -139,4 +139,4 @@ export {
   InputText,
   InputTextModule
 };
-//# sourceMappingURL=chunk-MEYW6HYB.js.map
+//# sourceMappingURL=chunk-CW2D4H55.js.map

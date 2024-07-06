@@ -374,17 +374,17 @@
   .example-2 .icon-content a:hover .filled {
     height: 100%;
   }
-  .example-2 .icon-content a[data-social="spotify"] .filled,
-  .example-2 .icon-content a[data-social="spotify"] ~ .tooltip {
+  .example-2 .icon-content a[data-social="whatsapp"] .filled,
+  .example-2 .icon-content a[data-social="whatsapp"] ~ .tooltip {
     background-color: #1db954;
   }
-  .example-2 .icon-content a[data-social="pinterest"] .filled,
-  .example-2 .icon-content a[data-social="pinterest"] ~ .tooltip {
-    background-color: #bd081c;
+  .example-2 .icon-content a[data-social="twitter"] .filled,
+  .example-2 .icon-content a[data-social="twitter"] ~ .tooltip {
+    background-color: #150608;
   }
-  .example-2 .icon-content a[data-social="dribbble"] .filled,
-  .example-2 .icon-content a[data-social="dribbble"] ~ .tooltip {
-    background-color: #ea4c89;
+  .example-2 .icon-content a[data-social="facebook"] .filled,
+  .example-2 .icon-content a[data-social="facebook"] ~ .tooltip {
+    background-color: #1354b6;
   }
   .example-2 .icon-content a[data-social="telegram"] .filled,
   .example-2 .icon-content a[data-social="telegram"] ~ .tooltip {

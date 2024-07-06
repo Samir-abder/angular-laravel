@@ -1,20 +1,20 @@
 import {
   Paginator,
   PaginatorModule
-} from "./chunk-S37FM5HY.js";
-import "./chunk-6FDGVNPQ.js";
+} from "./chunk-I7D3WM6N.js";
+import "./chunk-PINZHIE4.js";
 import {
   SpinnerIcon
-} from "./chunk-UQDLSMQ7.js";
-import "./chunk-GYMXIBTA.js";
-import "./chunk-S4B725QZ.js";
+} from "./chunk-YUVI6GQH.js";
+import "./chunk-ZQSUHRAR.js";
+import "./chunk-CW2D4H55.js";
+import "./chunk-KJOK2GAM.js";
 import {
   BaseIcon
-} from "./chunk-CSOYK6LG.js";
-import "./chunk-LZMSIMQG.js";
-import "./chunk-MEYW6HYB.js";
-import "./chunk-NKNN6QKT.js";
+} from "./chunk-VHYVE2LJ.js";
+import "./chunk-TKJMWDM5.js";
 import "./chunk-73SYDGCU.js";
+import "./chunk-NKNN6QKT.js";
 import {
   FilterService,
   Footer,
@@ -25,7 +25,7 @@ import {
   SharedModule,
   TranslationKeys,
   UniqueComponentId
-} from "./chunk-RIYG23RS.js";
+} from "./chunk-I7XBFZ65.js";
 import {
   CommonModule,
   NgClass,
@@ -818,7 +818,7 @@ var DataView = class _DataView {
       rows: [InputFlags.HasDecoratorInputTransform, "rows", "rows", numberAttribute],
       totalRecords: [InputFlags.HasDecoratorInputTransform, "totalRecords", "totalRecords", numberAttribute],
       pageLinks: [InputFlags.HasDecoratorInputTransform, "pageLinks", "pageLinks", numberAttribute],
-      rowsPerPageOptions: [InputFlags.HasDecoratorInputTransform, "rowsPerPageOptions", "rowsPerPageOptions", numberAttribute],
+      rowsPerPageOptions: "rowsPerPageOptions",
       paginatorPosition: "paginatorPosition",
       paginatorStyleClass: "paginatorStyleClass",
       alwaysShowPaginator: [InputFlags.HasDecoratorInputTransform, "alwaysShowPaginator", "alwaysShowPaginator", booleanAttribute],
@@ -939,7 +939,7 @@ var DataView = class _DataView {
             ></p-paginator>
 
             <div class="p-dataview-content">
-                <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: paginator ? (filteredValue || value | slice : (lazy ? 0 : first) : (lazy ? 0 : first) + rows) : filteredValue || value }"></ng-container>
+                <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: paginator ? (filteredValue || value | slice: (lazy ? 0 : first) : (lazy ? 0 : first) + rows) : filteredValue || value }"></ng-container>
 
                 <div *ngIf="isEmpty() && !loading">
                     <div class="p-dataview-emptymessage">
@@ -1019,10 +1019,7 @@ var DataView = class _DataView {
       }]
     }],
     rowsPerPageOptions: [{
-      type: Input,
-      args: [{
-        transform: numberAttribute
-      }]
+      type: Input
     }],
     paginatorPosition: [{
       type: Input

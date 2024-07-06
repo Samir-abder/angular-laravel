@@ -1,31 +1,38 @@
 import {
   CheckIcon
-} from "./chunk-6FDGVNPQ.js";
+} from "./chunk-PINZHIE4.js";
 import {
   AutoFocus,
   AutoFocusModule,
   ButtonDirective,
   ButtonModule,
   SpinnerIcon
-} from "./chunk-UQDLSMQ7.js";
+} from "./chunk-YUVI6GQH.js";
 import {
   Ripple,
   RippleModule
-} from "./chunk-GYMXIBTA.js";
-import {
-  TimesIcon
-} from "./chunk-S4B725QZ.js";
-import {
-  BaseIcon
-} from "./chunk-CSOYK6LG.js";
-import {
-  ConnectedOverlayScrollHandler,
-  DomHandler
-} from "./chunk-LZMSIMQG.js";
+} from "./chunk-ZQSUHRAR.js";
 import {
   InputText,
   InputTextModule
-} from "./chunk-MEYW6HYB.js";
+} from "./chunk-CW2D4H55.js";
+import {
+  TimesIcon
+} from "./chunk-KJOK2GAM.js";
+import {
+  BaseIcon
+} from "./chunk-VHYVE2LJ.js";
+import {
+  ConnectedOverlayScrollHandler,
+  DomHandler
+} from "./chunk-TKJMWDM5.js";
+import {
+  FormsModule,
+  NG_VALUE_ACCESSOR,
+  NgControl,
+  NgControlStatus,
+  NgModel
+} from "./chunk-73SYDGCU.js";
 import {
   animate,
   animation,
@@ -34,13 +41,6 @@ import {
   trigger,
   useAnimation
 } from "./chunk-NKNN6QKT.js";
-import {
-  FormsModule,
-  NG_VALUE_ACCESSOR,
-  NgControl,
-  NgControlStatus,
-  NgModel
-} from "./chunk-73SYDGCU.js";
 import {
   FilterService,
   ObjectUtils,
@@ -51,7 +51,7 @@ import {
   TranslationKeys,
   UniqueComponentId,
   zindexutils
-} from "./chunk-RIYG23RS.js";
+} from "./chunk-I7XBFZ65.js";
 import {
   CommonModule,
   DOCUMENT,
@@ -2678,17 +2678,22 @@ var Tooltip = class _Tooltip {
   ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId)) {
       this.zone.runOutsideAngular(() => {
-        if (this.getOption("tooltipEvent") === "hover") {
+        const tooltipEvent = this.getOption("tooltipEvent");
+        if (tooltipEvent === "hover" || tooltipEvent === "both") {
           this.mouseEnterListener = this.onMouseEnter.bind(this);
           this.mouseLeaveListener = this.onMouseLeave.bind(this);
           this.clickListener = this.onInputClick.bind(this);
           this.el.nativeElement.addEventListener("mouseenter", this.mouseEnterListener);
           this.el.nativeElement.addEventListener("click", this.clickListener);
           this.el.nativeElement.addEventListener("mouseleave", this.mouseLeaveListener);
-        } else if (this.getOption("tooltipEvent") === "focus") {
+        }
+        if (tooltipEvent === "focus" || tooltipEvent === "both") {
           this.focusListener = this.onFocus.bind(this);
           this.blurListener = this.onBlur.bind(this);
-          let target = this.getTarget(this.el.nativeElement);
+          let target = this.el.nativeElement.querySelector(".p-component");
+          if (!target) {
+            target = this.getTarget(this.el.nativeElement);
+          }
           target.addEventListener("focus", this.focusListener);
           target.addEventListener("blur", this.blurListener);
         }
@@ -2917,7 +2922,15 @@ var Tooltip = class _Tooltip {
       return;
     }
     this.create();
-    this.align();
+    const nativeElement = this.el.nativeElement;
+    const pDialogWrapper = nativeElement.closest("p-dialog");
+    if (pDialogWrapper) {
+      setTimeout(() => {
+        this.container && this.align();
+      }, 100);
+    } else {
+      this.align();
+    }
     DomHandler.fadeIn(this.container, 250);
     if (this.getOption("tooltipZIndex") === "auto")
       zindexutils.set("tooltip", this.container, this.config.zIndex.tooltip);
@@ -3016,11 +3029,15 @@ var Tooltip = class _Tooltip {
   }
   alignRight() {
     this.preAlign("right");
-    let hostOffset = this.getHostOffset();
-    let left = hostOffset.left + DomHandler.getOuterWidth(this.el.nativeElement);
-    let top = hostOffset.top + (DomHandler.getOuterHeight(this.el.nativeElement) - DomHandler.getOuterHeight(this.container)) / 2;
+    const el = this.activeElement;
+    const hostOffset = this.getHostOffset();
+    const left = hostOffset.left + DomHandler.getOuterWidth(el);
+    const top = hostOffset.top + (DomHandler.getOuterHeight(el) - DomHandler.getOuterHeight(this.container)) / 2;
     this.container.style.left = left + this.getOption("positionLeft") + "px";
     this.container.style.top = top + this.getOption("positionTop") + "px";
+  }
+  get activeElement() {
+    return this.el.nativeElement.nodeName.includes("P-") ? DomHandler.findSingle(this.el.nativeElement, ".p-component") || this.el.nativeElement : this.el.nativeElement;
   }
   alignLeft() {
     this.preAlign("left");
@@ -3101,12 +3118,17 @@ var Tooltip = class _Tooltip {
     }
   }
   unbindEvents() {
-    if (this.getOption("tooltipEvent") === "hover") {
+    const tooltipEvent = this.getOption("tooltipEvent");
+    if (tooltipEvent === "hover" || tooltipEvent === "both") {
       this.el.nativeElement.removeEventListener("mouseenter", this.mouseEnterListener);
       this.el.nativeElement.removeEventListener("mouseleave", this.mouseLeaveListener);
       this.el.nativeElement.removeEventListener("click", this.clickListener);
-    } else if (this.getOption("tooltipEvent") === "focus") {
-      let target = this.getTarget(this.el.nativeElement);
+    }
+    if (tooltipEvent === "focus" || tooltipEvent === "both") {
+      let target = this.el.nativeElement.querySelector(".p-component");
+      if (!target) {
+        target = this.getTarget(this.el.nativeElement);
+      }
       target.removeEventListener("focus", this.focusListener);
       target.removeEventListener("blur", this.blurListener);
     }
@@ -3606,7 +3628,7 @@ function Dropdown_span_2_ng_template_4_span_0_Template(rf, ctx) {
   if (rf & 2) {
     const ctx_r2 = ɵɵnextContext(3);
     ɵɵadvance();
-    ɵɵtextInterpolate(ctx_r2.label() === "p-emptylabel" ? " " : ctx_r2.placeholder());
+    ɵɵtextInterpolate(ctx_r2.label() === "p-emptylabel" ? " " : ctx_r2.label());
   }
 }
 function Dropdown_span_2_ng_template_4_Template(rf, ctx) {
@@ -3615,7 +3637,7 @@ function Dropdown_span_2_ng_template_4_Template(rf, ctx) {
   }
   if (rf & 2) {
     const ctx_r2 = ɵɵnextContext(2);
-    ɵɵproperty("ngIf", ctx_r2.displayPlaceholder());
+    ɵɵproperty("ngIf", ctx_r2.isSelectedOptionEmpty());
   }
 }
 function Dropdown_span_2_Template(rf, ctx) {
@@ -3647,7 +3669,7 @@ function Dropdown_span_2_Template(rf, ctx) {
     ɵɵadvance(2);
     ɵɵproperty("ngIf", !ctx_r2.selectedItemTemplate)("ngIfElse", defaultPlaceholder_r4);
     ɵɵadvance();
-    ɵɵproperty("ngIf", ctx_r2.selectedItemTemplate && ctx_r2.selectedOption);
+    ɵɵproperty("ngIf", ctx_r2.selectedItemTemplate && !ctx_r2.isSelectedOptionEmpty());
   }
 }
 function Dropdown_input_3_Template(rf, ctx) {
@@ -3676,7 +3698,7 @@ function Dropdown_input_3_Template(rf, ctx) {
   if (rf & 2) {
     const ctx_r2 = ɵɵnextContext();
     ɵɵproperty("ngClass", ctx_r2.inputClass)("disabled", ctx_r2.disabled)("autofocus", ctx_r2.autofocus);
-    ɵɵattribute("maxlength", ctx_r2.maxlength)("placeholder", ctx_r2.modelValue() === void 0 || ctx_r2.modelValue() === null ? ctx_r2.placeholder() : void 0)("aria-label", ctx_r2.ariaLabel || (ctx_r2.label() === "p-emptylabel" ? void 0 : ctx_r2.label()))("aria-activedescendant", ctx_r2.focused ? ctx_r2.focusedOptionId : void 0);
+    ɵɵattribute("id", ctx_r2.inputId)("maxlength", ctx_r2.maxlength)("placeholder", ctx_r2.modelValue() === void 0 || ctx_r2.modelValue() === null ? ctx_r2.placeholder() : void 0)("aria-label", ctx_r2.ariaLabel || (ctx_r2.label() === "p-emptylabel" ? void 0 : ctx_r2.label()))("aria-activedescendant", ctx_r2.focused ? ctx_r2.focusedOptionId : void 0);
   }
 }
 function Dropdown_ng_container_4_TimesIcon_1_Template(rf, ctx) {
@@ -5046,9 +5068,6 @@ var Dropdown = class _Dropdown {
   isModelValueNotSet() {
     return this.modelValue() === null && !this.isOptionValueEqualsModelValue(this.selectedOption);
   }
-  displayPlaceholder() {
-    return ObjectUtils.isEmpty(this.selectedOption) && this.label() === this.placeholder();
-  }
   getAllVisibleAndNonVisibleOptions() {
     return this.group ? this.flatOptions(this.options) : this.options || [];
   }
@@ -5191,6 +5210,9 @@ var Dropdown = class _Dropdown {
   allowModelChange() {
     return this.autoDisplayFirst && !this.placeholder() && (this.modelValue() === void 0 || this.modelValue() === null) && !this.editable && this.options && this.options.length;
   }
+  isSelectedOptionEmpty() {
+    return ObjectUtils.isEmpty(this.selectedOption);
+  }
   isSelected(option) {
     return this.isValidOption(option) && this.isOptionValueEqualsModelValue(option);
   }
@@ -5200,6 +5222,17 @@ var Dropdown = class _Dropdown {
   ngAfterViewInit() {
     if (this.editable) {
       this.updateEditableLabel();
+    }
+    this.updatePlaceHolderForFloatingLabel();
+  }
+  updatePlaceHolderForFloatingLabel() {
+    const parentElement = this.el.nativeElement.parentElement;
+    const isInFloatingLabel = parentElement?.classList.contains("p-float-label");
+    if (parentElement && isInFloatingLabel && !this.selectedOption) {
+      const label = parentElement.querySelector("label");
+      if (label) {
+        this._placeholder.set(label.textContent);
+      }
     }
   }
   updateEditableLabel() {
@@ -5873,7 +5906,7 @@ var Dropdown = class _Dropdown {
     features: [ɵɵProvidersFeature([DROPDOWN_VALUE_ACCESSOR]), ɵɵInputTransformsFeature],
     decls: 12,
     vars: 20,
-    consts: [["container", ""], ["elseBlock", ""], ["overlay", ""], ["focusInput", ""], ["defaultPlaceholder", ""], ["editableInput", ""], ["firstHiddenFocusableEl", ""], ["buildInItems", ""], ["lastHiddenFocusableEl", ""], ["builtInFilterElement", ""], ["filter", ""], ["scroller", ""], ["items", ""], ["emptyFilter", ""], ["empty", ""], [3, "click", "ngClass", "ngStyle"], ["role", "combobox", "pAutoFocus", "", 3, "ngClass", "pTooltip", "tooltipPosition", "positionStyle", "tooltipStyleClass", "autofocus", "focus", "blur", "keydown", 4, "ngIf"], ["type", "text", "aria-haspopup", "listbox", "pAutoFocus", "", 3, "ngClass", "disabled", "autofocus", "input", "keydown", "focus", "blur", 4, "ngIf"], [4, "ngIf"], ["role", "button", "aria-label", "dropdown trigger", "aria-haspopup", "listbox", 1, "p-dropdown-trigger"], [4, "ngIf", "ngIfElse"], [3, "visibleChange", "onAnimationStart", "onHide", "visible", "options", "target", "appendTo", "autoZIndex", "baseZIndex", "showTransitionOptions", "hideTransitionOptions"], ["pTemplate", "content"], ["role", "combobox", "pAutoFocus", "", 3, "focus", "blur", "keydown", "ngClass", "pTooltip", "tooltipPosition", "positionStyle", "tooltipStyleClass", "autofocus"], [3, "ngTemplateOutlet", "ngTemplateOutletContext", 4, "ngIf"], [3, "ngTemplateOutlet", "ngTemplateOutletContext"], ["type", "text", "aria-haspopup", "listbox", "pAutoFocus", "", 3, "input", "keydown", "focus", "blur", "ngClass", "disabled", "autofocus"], [3, "styleClass", "click", 4, "ngIf"], ["class", "p-dropdown-clear-icon", 3, "click", 4, "ngIf"], [3, "click", "styleClass"], [1, "p-dropdown-clear-icon", 3, "click"], [4, "ngTemplateOutlet"], ["aria-hidden", "true", 3, "ngClass", 4, "ngIf"], ["aria-hidden", "true", 3, "class", 4, "ngIf"], ["aria-hidden", "true", 3, "ngClass"], ["aria-hidden", "true"], ["class", "p-dropdown-trigger-icon", 4, "ngIf"], ["class", "p-dropdown-trigger-icon", 3, "ngClass", 4, "ngIf"], [3, "styleClass", 4, "ngIf"], [1, "p-dropdown-trigger-icon", 3, "ngClass"], [3, "styleClass"], [1, "p-dropdown-trigger-icon"], [3, "ngClass", "ngStyle"], ["role", "presentation", 1, "p-hidden-accessible", "p-hidden-focusable", 3, "focus"], ["class", "p-dropdown-header", 3, "click", 4, "ngIf"], ["role", "section", 1, "p-dropdown-items-wrapper"], [3, "items", "style", "itemSize", "autoSize", "lazy", "options", "onLazyLoad", 4, "ngIf"], [1, "p-dropdown-header", 3, "click"], [4, "ngTemplateOutlet", "ngTemplateOutletContext"], [1, "p-dropdown-filter-container"], ["type", "text", "role", "searchbox", "autocomplete", "off", 1, "p-dropdown-filter", "p-inputtext", "p-component", 3, "input", "keydown", "blur", "value", "ngClass"], ["class", "p-dropdown-filter-icon", 4, "ngIf"], [1, "p-dropdown-filter-icon"], [3, "onLazyLoad", "items", "itemSize", "autoSize", "lazy", "options"], ["pTemplate", "loader"], ["role", "listbox", 1, "p-dropdown-items", 3, "ngClass"], ["ngFor", "", 3, "ngForOf"], ["class", "p-dropdown-empty-message", "role", "option", 3, "ngStyle", 4, "ngIf"], ["role", "option", 1, "p-dropdown-item-group", 3, "ngStyle"], [3, "onClick", "onMouseEnter", "id", "option", "checkmark", "selected", "label", "disabled", "template", "focused", "ariaPosInset", "ariaSetSize"], ["role", "option", 1, "p-dropdown-empty-message", 3, "ngStyle"]],
+    consts: [["container", ""], ["elseBlock", ""], ["overlay", ""], ["focusInput", ""], ["defaultPlaceholder", ""], ["editableInput", ""], ["firstHiddenFocusableEl", ""], ["buildInItems", ""], ["lastHiddenFocusableEl", ""], ["builtInFilterElement", ""], ["filter", ""], ["scroller", ""], ["items", ""], ["emptyFilter", ""], ["empty", ""], [3, "click", "ngClass", "ngStyle"], ["role", "combobox", "pAutoFocus", "", 3, "ngClass", "pTooltip", "tooltipPosition", "positionStyle", "tooltipStyleClass", "autofocus", "focus", "blur", "keydown", 4, "ngIf"], ["type", "text", "aria-haspopup", "listbox", "pAutoFocus", "", 3, "ngClass", "disabled", "autofocus", "input", "keydown", "focus", "blur", 4, "ngIf"], [4, "ngIf"], ["role", "button", "aria-label", "dropdown trigger", "aria-haspopup", "listbox", 1, "p-dropdown-trigger"], [4, "ngIf", "ngIfElse"], [3, "visibleChange", "onAnimationStart", "onHide", "visible", "options", "target", "appendTo", "autoZIndex", "baseZIndex", "showTransitionOptions", "hideTransitionOptions"], ["pTemplate", "content"], ["role", "combobox", "pAutoFocus", "", 3, "focus", "blur", "keydown", "ngClass", "pTooltip", "tooltipPosition", "positionStyle", "tooltipStyleClass", "autofocus"], [3, "ngTemplateOutlet", "ngTemplateOutletContext", 4, "ngIf"], [3, "ngTemplateOutlet", "ngTemplateOutletContext"], ["type", "text", "aria-haspopup", "listbox", "pAutoFocus", "", 3, "input", "keydown", "focus", "blur", "ngClass", "disabled", "autofocus"], [3, "styleClass", "click", 4, "ngIf"], ["class", "p-dropdown-clear-icon", 3, "click", 4, "ngIf"], [3, "click", "styleClass"], [1, "p-dropdown-clear-icon", 3, "click"], [4, "ngTemplateOutlet"], ["aria-hidden", "true", 3, "ngClass", 4, "ngIf"], ["aria-hidden", "true", 3, "class", 4, "ngIf"], ["aria-hidden", "true", 3, "ngClass"], ["aria-hidden", "true"], ["class", "p-dropdown-trigger-icon", 4, "ngIf"], ["class", "p-dropdown-trigger-icon", 3, "ngClass", 4, "ngIf"], [3, "styleClass", 4, "ngIf"], [1, "p-dropdown-trigger-icon", 3, "ngClass"], [3, "styleClass"], [1, "p-dropdown-trigger-icon"], [3, "ngClass", "ngStyle"], ["role", "presentation", 1, "p-hidden-accessible", "p-hidden-focusable", 3, "focus"], ["class", "p-dropdown-header", 3, "click", 4, "ngIf"], [1, "p-dropdown-items-wrapper"], [3, "items", "style", "itemSize", "autoSize", "lazy", "options", "onLazyLoad", 4, "ngIf"], [1, "p-dropdown-header", 3, "click"], [4, "ngTemplateOutlet", "ngTemplateOutletContext"], [1, "p-dropdown-filter-container"], ["type", "text", "role", "searchbox", "autocomplete", "off", 1, "p-dropdown-filter", "p-inputtext", "p-component", 3, "input", "keydown", "blur", "value", "ngClass"], ["class", "p-dropdown-filter-icon", 4, "ngIf"], [1, "p-dropdown-filter-icon"], [3, "onLazyLoad", "items", "itemSize", "autoSize", "lazy", "options"], ["pTemplate", "loader"], ["role", "listbox", 1, "p-dropdown-items", 3, "ngClass"], ["ngFor", "", 3, "ngForOf"], ["class", "p-dropdown-empty-message", "role", "option", 3, "ngStyle", 4, "ngIf"], ["role", "option", 1, "p-dropdown-item-group", 3, "ngStyle"], [3, "onClick", "onMouseEnter", "id", "option", "checkmark", "selected", "label", "disabled", "template", "focused", "ariaPosInset", "ariaSetSize"], ["role", "option", 1, "p-dropdown-empty-message", 3, "ngStyle"]],
     template: function Dropdown_Template(rf, ctx) {
       if (rf & 1) {
         const _r1 = ɵɵgetCurrentView();
@@ -5882,7 +5915,7 @@ var Dropdown = class _Dropdown {
           ɵɵrestoreView(_r1);
           return ɵɵresetView(ctx.onContainerClick($event));
         });
-        ɵɵtemplate(2, Dropdown_span_2_Template, 6, 20, "span", 16)(3, Dropdown_input_3_Template, 2, 7, "input", 17)(4, Dropdown_ng_container_4_Template, 3, 2, "ng-container", 18);
+        ɵɵtemplate(2, Dropdown_span_2_Template, 6, 20, "span", 16)(3, Dropdown_input_3_Template, 2, 8, "input", 17)(4, Dropdown_ng_container_4_Template, 3, 2, "ng-container", 18);
         ɵɵelementStart(5, "div", 19);
         ɵɵtemplate(6, Dropdown_ng_container_6_Template, 3, 2, "ng-container", 20)(7, Dropdown_ng_template_7_Template, 2, 2, "ng-template", null, 1, ɵɵtemplateRefExtractor);
         ɵɵelementEnd();
@@ -5924,7 +5957,7 @@ var Dropdown = class _Dropdown {
       }
     },
     dependencies: () => [NgClass, NgForOf, NgIf, NgTemplateOutlet, NgStyle, Overlay, PrimeTemplate, Tooltip, Scroller, AutoFocus, TimesIcon, ChevronDownIcon, SearchIcon, DropdownItem],
-    styles: ["@layer primeng{.p-dropdown{display:inline-flex;cursor:pointer;position:relative;-webkit-user-select:none;user-select:none}.p-dropdown-clear-icon{position:absolute;top:50%;margin-top:-.5rem}.p-dropdown-trigger{display:flex;align-items:center;justify-content:center;flex-shrink:0}.p-dropdown-label{display:block;white-space:nowrap;overflow:hidden;flex:1 1 auto;width:1%;text-overflow:ellipsis;cursor:pointer}.p-dropdown-label-empty{overflow:hidden;opacity:0}input.p-dropdown-label{cursor:default}.p-dropdown .p-dropdown-panel{min-width:100%}.p-dropdown-items-wrapper{overflow:auto}.p-dropdown-item{cursor:pointer;font-weight:400;white-space:nowrap;position:relative;overflow:hidden}.p-dropdown-item-group{cursor:auto}.p-dropdown-items{margin:0;padding:0;list-style-type:none}.p-dropdown-filter{width:100%}.p-dropdown-filter-container{position:relative}.p-dropdown-filter-icon{position:absolute;top:50%;margin-top:-.5rem}.p-fluid .p-dropdown{display:flex}.p-fluid .p-dropdown .p-dropdown-label{width:1%}}\n"],
+    styles: ["@layer primeng{.p-dropdown{display:inline-flex;cursor:pointer;position:relative;-webkit-user-select:none;user-select:none}.p-dropdown-clear-icon{position:absolute;top:50%;margin-top:-.5rem}.p-dropdown-trigger{display:flex;align-items:center;justify-content:center;flex-shrink:0}.p-dropdown-label{display:block;white-space:nowrap;overflow:hidden;flex:1 1 auto;width:1%;text-overflow:ellipsis;cursor:pointer}.p-dropdown-label-empty{overflow:hidden;opacity:0}input.p-dropdown-label{cursor:default}.p-dropdown .p-dropdown-panel{min-width:100%}.p-dropdown-items-wrapper{overflow:auto}.p-dropdown-item{cursor:pointer;font-weight:400;white-space:nowrap;position:relative;overflow:hidden}.p-dropdown-item-group{cursor:auto}.p-dropdown-items{margin:0;padding:0;list-style-type:none}.p-dropdown-filter{width:100%}.p-dropdown-filter-container{position:relative}.p-dropdown-filter-icon{position:absolute;top:50%;margin-top:-.5rem}.p-fluid .p-dropdown{display:flex}.p-fluid .p-dropdown .p-dropdown-label{width:1%}.p-float-label .p-dropdown .p-placeholder{opacity:0}}\n"],
     encapsulation: 2,
     changeDetection: 0
   });
@@ -5963,15 +5996,16 @@ var Dropdown = class _Dropdown {
                 [attr.required]="required"
             >
                 <ng-container *ngIf="!selectedItemTemplate; else defaultPlaceholder">{{ label() === 'p-emptylabel' ? '&nbsp;' : label() }}</ng-container>
-                <ng-container *ngIf="selectedItemTemplate && selectedOption" [ngTemplateOutlet]="selectedItemTemplate" [ngTemplateOutletContext]="{ $implicit: selectedOption }"></ng-container>
+                <ng-container *ngIf="selectedItemTemplate && !isSelectedOptionEmpty()" [ngTemplateOutlet]="selectedItemTemplate" [ngTemplateOutletContext]="{ $implicit: selectedOption }"></ng-container>
                 <ng-template #defaultPlaceholder>
-                    <span *ngIf="displayPlaceholder()">{{ label() === 'p-emptylabel' ? '&nbsp;' : placeholder() }}</span>
+                    <span *ngIf="isSelectedOptionEmpty()">{{ label() === 'p-emptylabel' ? '&nbsp;' : label() }}</span>
                 </ng-template>
             </span>
             <input
                 *ngIf="editable"
                 #editableInput
                 type="text"
+                [attr.id]="inputId"
                 [attr.maxlength]="maxlength"
                 [ngClass]="inputClass"
                 [disabled]="disabled"
@@ -6070,7 +6104,7 @@ var Dropdown = class _Dropdown {
                                 </div>
                             </ng-template>
                         </div>
-                        <div class="p-dropdown-items-wrapper" [style.max-height]="virtualScroll ? 'auto' : scrollHeight || 'auto'" role="section">
+                        <div class="p-dropdown-items-wrapper" [style.max-height]="virtualScroll ? 'auto' : scrollHeight || 'auto'">
                             <p-scroller
                                 *ngIf="virtualScroll"
                                 #scroller
@@ -6159,7 +6193,7 @@ var Dropdown = class _Dropdown {
       providers: [DROPDOWN_VALUE_ACCESSOR],
       changeDetection: ChangeDetectionStrategy.OnPush,
       encapsulation: ViewEncapsulation$1.None,
-      styles: ["@layer primeng{.p-dropdown{display:inline-flex;cursor:pointer;position:relative;-webkit-user-select:none;user-select:none}.p-dropdown-clear-icon{position:absolute;top:50%;margin-top:-.5rem}.p-dropdown-trigger{display:flex;align-items:center;justify-content:center;flex-shrink:0}.p-dropdown-label{display:block;white-space:nowrap;overflow:hidden;flex:1 1 auto;width:1%;text-overflow:ellipsis;cursor:pointer}.p-dropdown-label-empty{overflow:hidden;opacity:0}input.p-dropdown-label{cursor:default}.p-dropdown .p-dropdown-panel{min-width:100%}.p-dropdown-items-wrapper{overflow:auto}.p-dropdown-item{cursor:pointer;font-weight:400;white-space:nowrap;position:relative;overflow:hidden}.p-dropdown-item-group{cursor:auto}.p-dropdown-items{margin:0;padding:0;list-style-type:none}.p-dropdown-filter{width:100%}.p-dropdown-filter-container{position:relative}.p-dropdown-filter-icon{position:absolute;top:50%;margin-top:-.5rem}.p-fluid .p-dropdown{display:flex}.p-fluid .p-dropdown .p-dropdown-label{width:1%}}\n"]
+      styles: ["@layer primeng{.p-dropdown{display:inline-flex;cursor:pointer;position:relative;-webkit-user-select:none;user-select:none}.p-dropdown-clear-icon{position:absolute;top:50%;margin-top:-.5rem}.p-dropdown-trigger{display:flex;align-items:center;justify-content:center;flex-shrink:0}.p-dropdown-label{display:block;white-space:nowrap;overflow:hidden;flex:1 1 auto;width:1%;text-overflow:ellipsis;cursor:pointer}.p-dropdown-label-empty{overflow:hidden;opacity:0}input.p-dropdown-label{cursor:default}.p-dropdown .p-dropdown-panel{min-width:100%}.p-dropdown-items-wrapper{overflow:auto}.p-dropdown-item{cursor:pointer;font-weight:400;white-space:nowrap;position:relative;overflow:hidden}.p-dropdown-item-group{cursor:auto}.p-dropdown-items{margin:0;padding:0;list-style-type:none}.p-dropdown-filter{width:100%}.p-dropdown-filter-container{position:relative}.p-dropdown-filter-icon{position:absolute;top:50%;margin-top:-.5rem}.p-fluid .p-dropdown{display:flex}.p-fluid .p-dropdown .p-dropdown-label{width:1%}.p-float-label .p-dropdown .p-placeholder{opacity:0}}\n"]
     }]
   }], () => [{
     type: ElementRef
@@ -7323,8 +7357,8 @@ var InputNumber = class _InputNumber {
       currency: this.currency,
       currencyDisplay: this.currencyDisplay,
       useGrouping: this.useGrouping,
-      minimumFractionDigits: this.minFractionDigits,
-      maximumFractionDigits: this.maxFractionDigits
+      minimumFractionDigits: this.minFractionDigits ?? void 0,
+      maximumFractionDigits: this.maxFractionDigits ?? void 0
     };
   }
   constructParser() {
@@ -7423,10 +7457,10 @@ var InputNumber = class _InputNumber {
       if (this.format) {
         let formatter = new Intl.NumberFormat(this.locale, this.getOptions());
         let formattedValue = formatter.format(value);
-        if (this.prefix) {
+        if (this.prefix && value != this.prefix) {
           formattedValue = this.prefix + formattedValue;
         }
-        if (this.suffix) {
+        if (this.suffix && value != this.suffix) {
           formattedValue = formattedValue + this.suffix;
         }
         return formattedValue;
@@ -7436,7 +7470,10 @@ var InputNumber = class _InputNumber {
     return "";
   }
   parseValue(text) {
-    let filteredText = text.replace(this._suffix, "").replace(this._prefix, "").trim().replace(/\s/g, "").replace(this._currency, "").replace(this._group, "").replace(this._minusSign, "-").replace(this._decimal, ".").replace(this._numeral, this._index);
+    const suffixRegex = new RegExp(this._suffix, "");
+    const prefixRegex = new RegExp(this._prefix, "");
+    const currencyRegex = new RegExp(this._currency, "");
+    let filteredText = text.replace(suffixRegex, "").replace(prefixRegex, "").trim().replace(/\s/g, "").replace(currencyRegex, "").replace(this._group, "").replace(this._minusSign, "-").replace(this._decimal, ".").replace(this._numeral, this._index);
     if (filteredText) {
       if (filteredText === "-")
         return filteredText;
@@ -7595,6 +7632,9 @@ var InputNumber = class _InputNumber {
       case "Backspace": {
         event.preventDefault();
         if (selectionStart === selectionEnd) {
+          if (selectionStart == 1 && this.prefix || selectionStart == inputValue.length && this.suffix) {
+            break;
+          }
           const deleteChar = inputValue.charAt(selectionStart - 1);
           const {
             decimalCharIndex,
@@ -7634,6 +7674,9 @@ var InputNumber = class _InputNumber {
       case "Delete":
         event.preventDefault();
         if (selectionStart === selectionEnd) {
+          if (selectionStart == 0 && this.prefix || selectionStart == inputValue.length - 1 && this.suffix) {
+            break;
+          }
           const deleteChar = inputValue.charAt(selectionStart);
           const {
             decimalCharIndex,
@@ -7866,12 +7909,15 @@ var InputNumber = class _InputNumber {
   }
   initCursor() {
     let selectionStart = this.input?.nativeElement.selectionStart;
+    let selectionEnd = this.input?.nativeElement.selectionEnd;
     let inputValue = this.input?.nativeElement.value;
     let valueLength = inputValue.length;
     let index = null;
     let prefixLength = (this.prefixChar || "").length;
     inputValue = inputValue.replace(this._prefix, "");
-    selectionStart = selectionStart - prefixLength;
+    if (selectionStart === selectionEnd || selectionStart !== 0 || selectionEnd < prefixLength) {
+      selectionStart -= prefixLength;
+    }
     let char = inputValue.charAt(selectionStart);
     if (this.isNumeralChar(char)) {
       return selectionStart + prefixLength;
@@ -8194,7 +8240,7 @@ var InputNumber = class _InputNumber {
     features: [ɵɵProvidersFeature([INPUTNUMBER_VALUE_ACCESSOR]), ɵɵInputTransformsFeature, ɵɵNgOnChangesFeature],
     decls: 7,
     vars: 41,
-    consts: [["input", ""], [3, "ngClass", "ngStyle"], ["pInputText", "", "role", "spinbutton", "inputmode", "decimal", "pAutoFocus", "", 3, "input", "keydown", "keypress", "paste", "click", "focus", "blur", "ngClass", "ngStyle", "value", "variant", "disabled", "readonly", "autofocus"], [4, "ngIf"], ["class", "p-inputnumber-button-group", 4, "ngIf"], ["type", "button", "pButton", "", "class", "p-button-icon-only", "tabindex", "-1", 3, "ngClass", "class", "disabled", "mousedown", "mouseup", "mouseleave", "keydown", "keyup", 4, "ngIf"], [3, "ngClass", "click", 4, "ngIf"], ["class", "p-inputnumber-clear-icon", 3, "click", 4, "ngIf"], [3, "click", "ngClass"], [1, "p-inputnumber-clear-icon", 3, "click"], [4, "ngTemplateOutlet"], [1, "p-inputnumber-button-group"], ["type", "button", "pButton", "", "tabindex", "-1", 1, "p-button-icon-only", 3, "mousedown", "mouseup", "mouseleave", "keydown", "keyup", "ngClass", "disabled"], [3, "ngClass", 4, "ngIf"], [3, "ngClass"]],
+    consts: [["input", ""], [3, "ngClass", "ngStyle"], ["pInputText", "", "role", "spinbutton", "inputmode", "decimal", "pAutoFocus", "", 3, "input", "keydown", "keypress", "paste", "click", "focus", "blur", "ngClass", "ngStyle", "value", "disabled", "readonly", "autofocus"], [4, "ngIf"], ["class", "p-inputnumber-button-group", 4, "ngIf"], ["type", "button", "pButton", "", "class", "p-button-icon-only", "tabindex", "-1", 3, "ngClass", "class", "disabled", "mousedown", "mouseup", "mouseleave", "keydown", "keyup", 4, "ngIf"], [3, "ngClass", "click", 4, "ngIf"], ["class", "p-inputnumber-clear-icon", 3, "click", 4, "ngIf"], [3, "click", "ngClass"], [1, "p-inputnumber-clear-icon", 3, "click"], [4, "ngTemplateOutlet"], [1, "p-inputnumber-button-group"], ["type", "button", "pButton", "", "tabindex", "-1", 1, "p-button-icon-only", 3, "mousedown", "mouseup", "mouseleave", "keydown", "keyup", "ngClass", "disabled"], [3, "ngClass", 4, "ngIf"], [3, "ngClass"]],
     template: function InputNumber_Template(rf, ctx) {
       if (rf & 1) {
         const _r1 = ɵɵgetCurrentView();
@@ -8231,8 +8277,8 @@ var InputNumber = class _InputNumber {
         ɵɵattribute("data-pc-name", "inputnumber")("data-pc-section", "root");
         ɵɵadvance();
         ɵɵclassMap(ctx.inputStyleClass);
-        ɵɵproperty("ngClass", "p-inputnumber-input")("ngStyle", ctx.inputStyle)("value", ctx.formattedValue())("variant", ctx.variant)("disabled", ctx.disabled)("readonly", ctx.readonly)("autofocus", ctx.autofocus);
-        ɵɵattribute("id", ctx.inputId)("aria-valuemin", ctx.min)("aria-valuemax", ctx.max)("aria-valuenow", ctx.value)("placeholder", ctx.placeholder)("aria-label", ctx.ariaLabel)("aria-labelledby", ctx.ariaLabelledBy)("title", ctx.title)("size", ctx.size)("name", ctx.name)("autocomplete", ctx.autocomplete)("maxlength", ctx.maxlength)("tabindex", ctx.tabindex)("aria-required", ctx.ariaRequired)("required", ctx.required)("min", ctx.min)("max", ctx.max)("data-pc-section", "input");
+        ɵɵproperty("ngClass", "p-inputnumber-input")("ngStyle", ctx.inputStyle)("value", ctx.formattedValue())("disabled", ctx.disabled)("readonly", ctx.readonly)("autofocus", ctx.autofocus);
+        ɵɵattribute("id", ctx.inputId)("variant", ctx.variant)("aria-valuemin", ctx.min)("aria-valuemax", ctx.max)("aria-valuenow", ctx.value)("placeholder", ctx.placeholder)("aria-label", ctx.ariaLabel)("aria-labelledby", ctx.ariaLabelledBy)("title", ctx.title)("size", ctx.size)("name", ctx.name)("autocomplete", ctx.autocomplete)("maxlength", ctx.maxlength)("tabindex", ctx.tabindex)("aria-required", ctx.ariaRequired)("required", ctx.required)("min", ctx.min)("max", ctx.max)("data-pc-section", "input");
         ɵɵadvance(2);
         ɵɵproperty("ngIf", ctx.buttonLayout != "vertical" && ctx.showClear && ctx.value);
         ɵɵadvance();
@@ -8276,7 +8322,7 @@ var InputNumber = class _InputNumber {
                 [ngStyle]="inputStyle"
                 [class]="inputStyleClass"
                 [value]="formattedValue()"
-                [variant]="variant"
+                [attr.variant]="variant"
                 [attr.aria-valuemin]="min"
                 [attr.aria-valuemax]="max"
                 [attr.aria-valuenow]="value"
@@ -9999,4 +10045,4 @@ export {
   Paginator,
   PaginatorModule
 };
-//# sourceMappingURL=chunk-S37FM5HY.js.map
+//# sourceMappingURL=chunk-I7D3WM6N.js.map

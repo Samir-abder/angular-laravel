@@ -5,7 +5,7 @@ import "./chunk-IFISKYM4.js";
 import "./chunk-KJGM2PGZ.js";
 import {
   SharedModule
-} from "./chunk-RIYG23RS.js";
+} from "./chunk-I7XBFZ65.js";
 import {
   CommonModule
 } from "./chunk-XAS4SJBG.js";

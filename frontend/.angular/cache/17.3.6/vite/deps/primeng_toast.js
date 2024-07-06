@@ -1,17 +1,19 @@
 import {
   CheckIcon
-} from "./chunk-6FDGVNPQ.js";
+} from "./chunk-PINZHIE4.js";
 import {
   Ripple,
   RippleModule
-} from "./chunk-GYMXIBTA.js";
+} from "./chunk-ZQSUHRAR.js";
 import {
   TimesIcon
-} from "./chunk-S4B725QZ.js";
+} from "./chunk-KJOK2GAM.js";
 import {
   BaseIcon
-} from "./chunk-CSOYK6LG.js";
-import "./chunk-LZMSIMQG.js";
+} from "./chunk-VHYVE2LJ.js";
+import {
+  DomHandler
+} from "./chunk-TKJMWDM5.js";
 import {
   animate,
   animateChild,
@@ -29,7 +31,7 @@ import {
   SharedModule,
   UniqueComponentId,
   zindexutils
-} from "./chunk-RIYG23RS.js";
+} from "./chunk-I7XBFZ65.js";
 import {
   CommonModule,
   DOCUMENT,
@@ -1005,6 +1007,7 @@ var Toast = class _Toast {
                 `;
       }
       this.renderer.setProperty(this.styleElement, "innerHTML", innerHTML);
+      DomHandler.setAttribute(this.styleElement, "nonce", this.config?.csp()?.nonce);
     }
   }
   destroyStyle() {

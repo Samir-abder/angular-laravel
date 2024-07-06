@@ -1,24 +1,24 @@
 import {
+  FocusTrap,
+  FocusTrapModule
+} from "./chunk-LHNG3S4N.js";
+import {
   ButtonDirective,
   ButtonModule
-} from "./chunk-UQDLSMQ7.js";
+} from "./chunk-YUVI6GQH.js";
 import {
   Ripple,
   RippleModule
-} from "./chunk-GYMXIBTA.js";
-import {
-  FocusTrap,
-  FocusTrapModule
-} from "./chunk-36UWQQHT.js";
+} from "./chunk-ZQSUHRAR.js";
 import {
   TimesIcon
-} from "./chunk-S4B725QZ.js";
+} from "./chunk-KJOK2GAM.js";
 import {
   BaseIcon
-} from "./chunk-CSOYK6LG.js";
+} from "./chunk-VHYVE2LJ.js";
 import {
   DomHandler
-} from "./chunk-LZMSIMQG.js";
+} from "./chunk-TKJMWDM5.js";
 import {
   animate,
   animation,
@@ -36,7 +36,7 @@ import {
   TranslationKeys,
   UniqueComponentId,
   zindexutils
-} from "./chunk-RIYG23RS.js";
+} from "./chunk-I7XBFZ65.js";
 import {
   CommonModule,
   DOCUMENT,
@@ -1053,7 +1053,7 @@ var Dialog = class _Dialog {
   getAriaLabelledBy() {
     return this.header !== null ? UniqueComponentId() + "_header" : null;
   }
-  focus(focusParentElement = this.contentViewChild.nativeElement) {
+  focus(focusParentElement = this.contentViewChild?.nativeElement) {
     let focusable = DomHandler.getFocusableElement(focusParentElement, "[autofocus]");
     if (focusable) {
       this.zone.runOutsideAngular(() => {
@@ -1142,6 +1142,7 @@ var Dialog = class _Dialog {
                     `;
         }
         this.renderer.setProperty(this.styleElement, "innerHTML", innerHTML);
+        DomHandler.setAttribute(this.styleElement, "nonce", this.config?.csp()?.nonce);
       }
     }
   }

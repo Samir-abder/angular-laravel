@@ -1,11 +1,10 @@
 import {
   DomHandler
-} from "./chunk-LZMSIMQG.js";
+} from "./chunk-TKJMWDM5.js";
 import {
   PrimeNGConfig
-} from "./chunk-RIYG23RS.js";
+} from "./chunk-I7XBFZ65.js";
 import {
-  CommonModule,
   DOCUMENT,
   isPlatformBrowser
 } from "./chunk-XAS4SJBG.js";
@@ -130,7 +129,8 @@ var Ripple = class _Ripple {
   static ɵdir = ɵɵdefineDirective({
     type: _Ripple,
     selectors: [["", "pRipple", ""]],
-    hostAttrs: [1, "p-ripple", "p-element"]
+    hostAttrs: [1, "p-ripple", "p-element"],
+    standalone: true
   });
 };
 (() => {
@@ -138,6 +138,7 @@ var Ripple = class _Ripple {
     type: Directive,
     args: [{
       selector: "[pRipple]",
+      standalone: true,
       host: {
         class: "p-ripple p-element"
       }
@@ -173,21 +174,17 @@ var RippleModule = class _RippleModule {
   };
   static ɵmod = ɵɵdefineNgModule({
     type: _RippleModule,
-    declarations: [Ripple],
-    imports: [CommonModule],
+    imports: [Ripple],
     exports: [Ripple]
   });
-  static ɵinj = ɵɵdefineInjector({
-    imports: [CommonModule]
-  });
+  static ɵinj = ɵɵdefineInjector({});
 };
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(RippleModule, [{
     type: NgModule,
     args: [{
-      imports: [CommonModule],
-      exports: [Ripple],
-      declarations: [Ripple]
+      imports: [Ripple],
+      exports: [Ripple]
     }]
   }], null, null);
 })();
@@ -196,4 +193,4 @@ export {
   Ripple,
   RippleModule
 };
-//# sourceMappingURL=chunk-GYMXIBTA.js.map
+//# sourceMappingURL=chunk-ZQSUHRAR.js.map

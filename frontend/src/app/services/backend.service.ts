@@ -45,4 +45,18 @@ export class BackendService {
   submitVideos(data:any){
     return this.http.post('http://127.0.0.1:8000/api/video', data);
   }
+  saveComment(data:any){
+    console.log(data);
+    return this.http.post('http://127.0.0.1:8000/api/comentario', data);
+  }
+
+  getAllCommentsByLink(link: string) {
+    const apiUrl = `http://127.0.0.1:8000/api/getAllCommentsByLink/${encodeURIComponent(link)}`;
+    return this.http.get(apiUrl);
+  }
+
+  shareVideo(data:any){
+    console.log(data);
+    return this.http.post('http://127.0.0.1:8000/api/share-video', data);
+  }
 }
